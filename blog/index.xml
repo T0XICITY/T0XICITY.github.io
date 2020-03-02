@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Blogs on T0XICITY</title>
+    <link>https://T0XICITY.github.io/blog/</link>
+    <description>Recent content in Blogs on T0XICITY</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 02 Mar 2020 16:46:46 +0100</lastBuildDate>
+    
+	<atom:link href="https://T0XICITY.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>First Try</title>
+      <link>https://T0XICITY.github.io/blog/first-try/</link>
+      <pubDate>Mon, 02 Mar 2020 16:46:46 +0100</pubDate>
+      
+      <guid>https://T0XICITY.github.io/blog/first-try/</guid>
+      <description>First Try hhhhh lets test this
+print(&amp;quot;Hello World!&amp;quot;)</description>
+    </item>
+    
+    <item>
+      <title>Hello Friend</title>
+      <link>https://T0XICITY.github.io/blog/hello/</link>
+      <pubDate>Wed, 17 Sep 1986 00:00:00 +0000</pubDate>
+      
+      <guid>https://T0XICITY.github.io/blog/hello/</guid>
+      <description> &amp;ldquo;Hello, friend?&amp;rdquo; That&amp;rsquo;s lame. Maybe I should give you a name&amp;hellip; But that&amp;rsquo;s a slippery slope. You&amp;rsquo;re only in my head. We have to remember that&amp;hellip; Shit. It&amp;rsquo;s actually happened. I&amp;rsquo;m talking to an imaginary person.
+— Mr. Robot S01E01
+ </description>
+    </item>
+    
+  </channel>
+</rss>
