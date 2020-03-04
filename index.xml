@@ -6,6 +6,7 @@
     <description>Recent content on T0XICITY</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+    <copyright>Patrick Klingenberg</copyright>
     <lastBuildDate>Fri, 25 Jan 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://T0XICITY.github.io/index.xml" rel="self" type="application/rss+xml" />
@@ -41,6 +42,15 @@ This theme is pretty basic and covers all of the essentials. All you have to do 
       <description> &amp;ldquo;Hello, friend?&amp;rdquo; That&amp;rsquo;s lame. Maybe I should give you a name&amp;hellip; But that&amp;rsquo;s a slippery slope. You&amp;rsquo;re only in my head. We have to remember that&amp;hellip; Shit. It&amp;rsquo;s actually happened. I&amp;rsquo;m talking to an imaginary person.
 — Mr. Robot S01E01
  </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://T0XICITY.github.io/privacy/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://T0XICITY.github.io/privacy/</guid>
+      <description>Privacy stuff here</description>
     </item>
     
   </channel>
