@@ -4,30 +4,26 @@
   
   <url>
     <loc>https://T0XICITY.github.io/blog/</loc>
-    <lastmod>2020-03-02T16:46:46+01:00</lastmod>
+    <lastmod>2020-03-05T15:21:16+01:00</lastmod>
   </url>
   
   <url>
-    <loc>https://T0XICITY.github.io/blog/first-try/</loc>
-    <lastmod>2020-03-02T16:46:46+01:00</lastmod>
+    <loc>https://T0XICITY.github.io/blog/first-post/</loc>
+    <lastmod>2020-03-05T15:21:16+01:00</lastmod>
   </url>
   
   <url>
     <loc>https://T0XICITY.github.io/</loc>
-    <lastmod>2020-03-02T16:46:46+01:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://T0XICITY.github.io/blog/hello/</loc>
-    <lastmod>1986-09-17T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://T0XICITY.github.io/privacy/</loc>
+    <lastmod>2020-03-05T15:21:16+01:00</lastmod>
   </url>
   
   <url>
     <loc>https://T0XICITY.github.io/about/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://T0XICITY.github.io/privacy/</loc>
   </url>
   
   <url>
