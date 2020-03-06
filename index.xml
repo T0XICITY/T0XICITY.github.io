@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Patrick Klingenberg</copyright>
-    <lastBuildDate>Thu, 05 Mar 2020 15:21:16 +0100</lastBuildDate>
+    <lastBuildDate>Thu, 05 Mar 2020 17:41:28 +0100</lastBuildDate>
     
 	<atom:link href="https://T0XICITY.com/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Development process of this website</title>
+      <link>https://T0XICITY.com/blog/this-website/</link>
+      <pubDate>Thu, 05 Mar 2020 17:41:28 +0100</pubDate>
+      
+      <guid>https://T0XICITY.com/blog/this-website/</guid>
+      <description>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</description>
+    </item>
     
     <item>
       <title>First Post</title>
