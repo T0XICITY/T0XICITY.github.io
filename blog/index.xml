@@ -2,27 +2,29 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Blogs on T0XICITY</title>
-    <link>https://T0XICITY.github.io/blog/</link>
+    <link>https://T0XICITY.com/blog/</link>
     <description>Recent content in Blogs on T0XICITY</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Patrick Klingenberg</copyright>
     <lastBuildDate>Thu, 05 Mar 2020 15:21:16 +0100</lastBuildDate>
     
-	<atom:link href="https://T0XICITY.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://T0XICITY.com/blog/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>First Post</title>
-      <link>https://T0XICITY.github.io/blog/first-post/</link>
+      <link>https://T0XICITY.com/blog/first-post/</link>
       <pubDate>Thu, 05 Mar 2020 15:21:16 +0100</pubDate>
       
-      <guid>https://T0XICITY.github.io/blog/first-post/</guid>
+      <guid>https://T0XICITY.com/blog/first-post/</guid>
       <description>The first post in my new blog. It is for testing some basic functions.
-FAT
- First ordered list item Another item   Unordered list can use asterisks   Or pluses +  Some code: #include &amp;lt;iostream&amp;gt; using namespace std; int main() { cout &amp;lt;&amp;lt; &amp;#34;Hello, World!&amp;#34;; return 0; }
-var s = &amp;#34;JavaScript syntax highlighting&amp;#34;; alert(s); #!/bin/bash echo &amp;#34;hello world&amp;#34;  Quote:
-&amp;quot;Success is not final; failure is not fatal: It is the courage to continue that counts.</description>
+Text
+ Quote:
+&amp;quot;Success is not final; failure is not fatal: It is the courage to continue that counts.&amp;rdquo;
+-Winston S. Churchill
+ FAT
+ First ordered list item Another item   Unordered list can use asterisks   Or pluses +  Some code: #include &amp;lt;iostream&amp;gt; using namespace std; int main() { cout &amp;lt;&amp;lt; &amp;#34;Hello, World!</description>
     </item>
     
   </channel>
