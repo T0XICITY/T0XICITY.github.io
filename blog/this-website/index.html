@@ -6,7 +6,8 @@
     
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-<meta name="description" content="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua."/>
+<meta name="description" content="How i got the idea to create a static website This website was created during my semester break. originally I had an unused Raspberry Pi 3 that i wanted to use as a webserver for hosting a website using the Wordpress Content-Management-System.
+Long story in brief - I installed LAMP (Linux, Apache, MySQL, PHP) on the pi and found that the performance of the website was not exactly what I had in mind."/>
 <meta name="keywords" content="hacking, bash, linux, ctf"/>
 <meta name="robots" content="noodp"/>
 <link rel="canonical" href="https://T0XICITY.com/blog/this-website/" />
@@ -27,12 +28,12 @@
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Development process of this website"/>
-<meta name="twitter:description" content="How this ... website... creation"/>
+<meta name="twitter:description" content="How this website was created. From a Wordpress project to a static website with Hugo. "/>
 
 
 
 <meta property="og:title" content="Development process of this website" />
-<meta property="og:description" content="How this ... website... creation" />
+<meta property="og:description" content="How this website was created. From a Wordpress project to a static website with Hugo. " />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://T0XICITY.com/blog/this-website/" />
 <meta property="article:published_time" content="2020-03-05T17:41:28+01:00" />
@@ -141,7 +142,49 @@
     
 
     <div class="post-content">
-      <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+      <h2 id="how-i-got-the-idea-to-create-a-static-website">How i got the idea to create a static website</h2>
+<p>This website was created during my semester break. originally I had an unused Raspberry Pi 3 that i wanted to use as a webserver for hosting a website using the Wordpress Content-Management-System.</p>
+<p>Long story in brief - I installed LAMP (Linux, Apache, MySQL, PHP) on the pi and found that the performance of the website was not exactly what I had in mind. In retrospect, it&rsquo;s clear when you consider how many components wordpress consists of.</p>
+<p>Looking for an alternative I came across the concept of static website generators. These do not use a CMS which stores the content of the website in a database. Instead, content is pre-generated as HTML code and then loaded onto a server. All files are structured in directories, with a clean separation of content and design. As a result, design changes can easily be made without changing the actual content.</p>
+<h2 id="advantages-of-static-website-generators">Advantages of static website generators</h2>
+<ol>
+<li>
+<p>Speed<br>
+As described above, websites are pre-rendered static HTML. Time-consuming database queries are no longer necessary, so the websites load much faster.</p>
+</li>
+<li>
+<p>Security<br>
+Static websites use fewer components - where there is no database, no hacking is possible 😊. There is no way to make a malicious request. A user can only request files that contain HTML, CSS, JavaScript or images - the user cannot cause an application to do something malicious or cause a database to reveal privileged information. A CMS with third-party extensions inevitably gives hackers more opportunities for attack.</p>
+</li>
+<li>
+<p>Version management<br>
+The development process of the website can be easily logged and managed using version controll software such as Git.</p>
+</li>
+<li>
+<p>Maintenance and handling<br>
+CMS solutions require frequent updates of individual components/ modules. Also, the use of plugins can lead to unpredictable interactions which can be a potential security risk. Static website generators do not require constant updates.</p>
+</li>
+</ol>
+<h2 id="provider-of-static-website-generators">Provider of static website generators</h2>
+<p>There are a lot of static website generators out there. In the following I would like to introduce two of them in more detail. 
+Both options are easy to use from the command line, have detailed documentation and are easy to use. The choice is purely based on personal preferences.</p>
+<ol>
+<li>
+<p>Jekyll<br>
+Jekyll was founded in 2008 by a co-founder of GitHub and is also used for GitHub Pages. It is one of the most used static website generators. Content is created in Markdown, a language designed for text formatting. Markdown is embedded into an HTML template using the Liquid Template Engine. Jekyll works with libraries like Bootstrap. Existing websites can be migrated to Jekyll using the so-called Importer, for example, you can convert a WordPress page into a Jekyll page.<br>
+<a href="https://jekyllrb.com/">To the static website generator Jekyll</a></p>
+</li>
+<li>
+<p>Hugo<br>
+Hugo is often compared to Jekyll and is newer. An important feature is its outstanding performance. The content is also written with Markdown and the Template Engine is based on the Go templates. Hugo is written in the Go programming language.<br>
+<a href="https://gohugo.io/">To the static website generator Hugo</a></p>
+</li>
+</ol>
+<h2 id="development-process">Development process</h2>
+<p>I would like to keep this section short and refer to the documentation of the providers i have used. The only thing i would like to point out is that i now host this website via GitHub Pages instead of a Raspberry Pi as previously planned. The reasons for this are the combination of version control and hosting provider in one, the ease of use and of course that I still have a Raspberry Pi available 😊.</p>
+<h2 id="summary">Summary</h2>
+<p>In summary, i&rsquo;m very happy to have found static website generators. I&rsquo;m also quite happy with my first blog, although it&rsquo;s already clear to me that i&rsquo;ll be making some changes to it.<br>
+In the future i would like to continue with the design and customazing of hugo themes.</p>
 
     </div>
     
