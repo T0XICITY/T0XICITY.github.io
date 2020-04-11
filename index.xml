@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Patrick Klingenberg</copyright>
-    <lastBuildDate>Thu, 05 Mar 2020 17:41:28 +0100</lastBuildDate>
+    <lastBuildDate>Sat, 28 Mar 2020 15:22:16 +0100</lastBuildDate>
     
 	<atom:link href="https://T0XICITY.com/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Google CTF 2019</title>
+      <link>https://T0XICITY.com/blog/googlectf2019/</link>
+      <pubDate>Sat, 28 Mar 2020 15:22:16 +0100</pubDate>
+      
+      <guid>https://T0XICITY.com/blog/googlectf2019/</guid>
+      <description>Google CTF 2019 Writeup 1. Enter Space-Time Coordinates After Downloading the attachment we can run the file command to get additional information. patrick@VB:~/Desktop/Google1$ file 00c2a73eec8abb4afb9c3ef3a161b64b451446910535bfc0cc81c2b04aa132ed 00c2a73eec8abb4afb9c3ef3a161b64b451446910535bfc0cc81c2b04aa132ed: Zip archive data, at least v2.0 to extract As we can see the file is an Zip archive - So let&amp;rsquo;s just unzip it! patrick@VB:~/Desktop/Google1$ unzip 00c2a73eec8abb4afb9c3ef3a161b64b451446910535bfc0cc81c2b04aa132ed Archive: 00c2a73eec8abb4afb9c3ef3a161b64b451446910535bfc0cc81c2b04aa132ed extracting: log.txt extracting: rand2  We get two files log.txt and rand2. patrick@VB:~/Desktop/Google1$ cat rand2  Running the cat command on the rand2 file shows us the first flag:</description>
+    </item>
     
     <item>
       <title>Development process of this website</title>
@@ -20,21 +29,6 @@
       <guid>https://T0XICITY.com/blog/this-website/</guid>
       <description>How i got the idea to create a static website This website was created during my semester break. originally I had an unused Raspberry Pi 3 that i wanted to use as a webserver for hosting a website using the Wordpress Content-Management-System.
 Long story in brief - I installed LAMP (Linux, Apache, MySQL, PHP) on the pi and found that the performance of the website was not exactly what I had in mind.</description>
-    </item>
-    
-    <item>
-      <title>First Post</title>
-      <link>https://T0XICITY.com/blog/first-post/</link>
-      <pubDate>Thu, 05 Mar 2020 15:21:16 +0100</pubDate>
-      
-      <guid>https://T0XICITY.com/blog/first-post/</guid>
-      <description>The first post in my new blog. It is for testing some basic functions.
-Text
- Quote:
-&amp;quot;Success is not final; failure is not fatal: It is the courage to continue that counts.&amp;rdquo;
--Winston S. Churchill
- FAT
- First ordered list item Another item   Unordered list can use asterisks   Or pluses +  Some code: #include &amp;lt;iostream&amp;gt; using namespace std; int main() { cout &amp;lt;&amp;lt; &amp;#34;Hello, World!</description>
     </item>
     
     <item>

