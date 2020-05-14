@@ -14,10 +14,10 @@
     
     <item>
       <title>Google XSS Challenge</title>
-      <link>https://T0XICITY.com/blog/xss-game.appspot/</link>
+      <link>https://T0XICITY.com/blog/xss-game/</link>
       <pubDate>Tue, 28 Apr 2020 21:04:06 +0100</pubDate>
       
-      <guid>https://T0XICITY.com/blog/xss-game.appspot/</guid>
+      <guid>https://T0XICITY.com/blog/xss-game/</guid>
       <description>Google XSS Game In this post I solve the Goolge beginners XSS challanges. These are easier and especially recommended for beginners.
 Level 1: Hello, world of XSS This entry-level task is a simple example of XSS. No matter which payload is placed where, it is executed.
 Payload: // In the input field &amp;lt;script&amp;gt;alert(0)&amp;lt;/script&amp;gt; //In the url frame?query=&amp;lt;script&amp;gt;alert(0)&amp;lt;/script&amp;gt; The code is integrated into the application without further verification, so that the browser understands and executes it as part of the page code.</description>
