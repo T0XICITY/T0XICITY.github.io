@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    
+      <title>Digital warfare in Ukraine :: T0XICITY — Wannabe h4x0r</title>
+    
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<meta name="description" content="Digital warfare in Ukraine This report deals with digital warfare at the example of cyber activities conducted in the Ukrainian conflict. It shows how digital warfare has evolved over time and how Ukraine has become a testing ground for cyberweapons. It discusses the difficulties of assigning and preventing cyber-attacks. Based on a ransomware attack in 2017 this report will show that cyber warfare is much more than a theoretical threat. It will highlight the impact of the malware attack NotPetya, as well as the reaction of politics and computer experts to the occurred events."/>
+<meta name="keywords" content="hacking, bash, linux, ctf"/>
+<meta name="robots" content="noodp"/>
+<link rel="canonical" href="https://T0XICITY.com/blog/digital_warfare_ukraine/" />
+
+
+
+
+
+<link rel="stylesheet" href="https://T0XICITY.com/assets/style.css">
+
+
+<link rel="stylesheet" href="https://T0XICITY.com/style.css">
+
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://T0XICITY.com/img/apple-touch-icon-144-precomposed.png">
+<link rel="shortcut icon" href="https://T0XICITY.com/img/favicon.png">
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Digital warfare in Ukraine"/>
+<meta name="twitter:description" content="This report deals with digital warfare at the example of cyber activities conducted in the Ukrainian conflict. It will highlight the impact of the malware attack NotPetya."/>
+
+
+
+<meta property="og:title" content="Digital warfare in Ukraine" />
+<meta property="og:description" content="This report deals with digital warfare at the example of cyber activities conducted in the Ukrainian conflict. It will highlight the impact of the malware attack NotPetya." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://T0XICITY.com/blog/digital_warfare_ukraine/" />
+<meta property="article:published_time" content="2020-01-03T18:55:05+01:00" />
+<meta property="article:modified_time" content="2020-01-03T18:55:05+01:00" /><meta property="og:site_name" content="T0XICITY" />
+
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-174271647-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-174271647-1');
+</script>
+
+
+  </head>
+  <body class="dark-theme">
+    <div class="container">
+      <header class="header">
+  <span class="header__inner">
+    <a href="/" class="logo" style="text-decoration: none;">
+  
+    <span class="logo__mark"><svg xmlns="http://www.w3.org/2000/svg" class="greater-icon" viewBox="0 0 44 44">
+  <path fill="none" d="M15 8l14.729 14.382L15 35.367"/>
+</svg>
+</span>
+    <span class="logo__text">T0XICITY</span>
+    <span class="logo__cursor"></span>
+  
+</a>
+
+    <span class="header__right">
+      
+        <nav class="menu">
+  <ul class="menu__inner menu__inner--desktop">
+    
+      
+        
+          <li><a href="/about">About</a></li>
+        
+      
+        
+          <li><a href="/blog">Blog</a></li>
+        
+      
+      
+    
+  </ul>
+
+  <ul class="menu__inner menu__inner--mobile">
+    
+      
+        <li><a href="/about">About</a></li>
+      
+    
+      
+        <li><a href="/blog">Blog</a></li>
+      
+    
+  </ul>
+</nav>
+
+        <span class="menu-trigger">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M0 0h24v24H0z" fill="none"/>
+            <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+          </svg>
+        </span>
+      
+      <span class="theme-toggle">
+        <svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+  3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+  13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
+</svg>
+
+      </span>
+    </span>
+  </span>
+</header>
+
+
+      <div class="content">
+        
+  
+  
+
+  <div class="post">
+    <h2 class="post-title"><a href="https://T0XICITY.com/blog/digital_warfare_ukraine/">Digital warfare in Ukraine</a></h2>
+    <div class="post-meta">
+      
+        <span class="post-date">
+          2020-01-03
+        </span>
+
+        
+          
+        
+      
+
+      <span class="post-author">— Written by Patrick</span>
+      
+    </div>
+
+    
+
+    
+      
+        <img src="https://T0XICITY.com/img/digitalWarfareInUkraine/digtal_warfare_in_Ukraine.jpg" class="post-cover" />
+      
+    
+
+    <div class="post-content">
+      <h1 id="digital-warfare-in-ukraine">Digital warfare in Ukraine</h1>
+<p>This report deals with digital warfare at the example of cyber activities conducted in the Ukrainian conflict. It shows how digital warfare has evolved over time and how Ukraine has become a testing ground for cyberweapons. It discusses the difficulties of assigning and preventing cyber-attacks. Based on a ransomware attack in 2017 this report will show that cyber warfare is much more than a theoretical threat. It will highlight the impact of the malware attack NotPetya, as well as the reaction of politics and computer experts to the occurred events. This report summarizes the aspects of the cyberwar in Ukraine and derives strategies for preventing future attacks. The last section of the paper explains concrete countermeasures according to the ISO standard.</p>
+<h2 id="1-introduction">1. Introduction</h2>
+<p>Cyberwar has never been more ubiquitous than it is today. The events taking place in Ukraine place the whole world in the grip of new challenges. At the moment there might be no better place to witness cyber conflict in action than Ukraine. Ukraine has been the victim of a sustained cyber-assault unlike any the world has ever seen, undermining practically every sector of Ukraine - media, finance, transportation, military, politics, energy. The following describes Cyberwar in general and how the Ukraine has become a digital test field for cybercrime. It will also show why it is important to keep an eye on the conflict and what we can learn out of it.</p>
+<h2 id="2-cyberwar">2. Cyberwar</h2>
+<p>This section explains cyber warfare and how it differs from regular warfare. Impacts on social and economic levels are shown as well as the associated problems.</p>
+<p><em>&ldquo;The physics of cyberspace is fundamentally different from all other war zones.&quot;</em> [Gre 18] A cyberweapon reminds in this physics that distance is not defence. Every barbarian is already at every gate. And the network of entanglements in this ether, which has unified and set the world up for the last 25 years, can bring it to a standstill in a few hours on a summer&rsquo;s day. [Gre 18]</p>
+<p>Cyberwar is a warlike conflict between states in the virtual space, which is led by means of information technology. It aims to harm countries, institutions or society electronically and disrupt important infrastructures.</p>
+<p>The effects of cyberwar and cyberterrorism are unimaginable. It is not is not a power or water failure that lasts for a few hours and then everything continues as usual. If it comes to cyberwar, the consequences are devastating. Specifically, this means that all communication, information and supply tracts might be interrupted. As a result, people are completely isolated and vulnerable. Masses of panic and supply shortages could result.          - There are emergency plans in case natural disasters cause a failure that lasts a few days, but no one expects a loss of supply for several months or even years.</p>
+<h3 id="21-targets">2.1 Targets</h3>
+<p>Ukraine proves to be a good target for attackers due to the ongoing military conflict with Russia. Many of the used computers there run pirated software that does not receive security patches. In addition, Ukraine is very well connected within Europe offering a backdoor vulnerability to hack other states. [Cer 19]. In many cases the computer systems are not the final target - they are being targeted because of their role in managing real-world infrastructure like airports or power grids.</p>
+<p><em>Knock out the computers and you can shut down the airport or the power station as a result.</em></p>
+<p>Commonly if we talk about a critical security threats and attack surfaces we often think of critical infrastructure like hospitals, energy supplier or hardware in general. But there is not just the hardware or technological problem we have to face. Equally important is the threat to the human infrastructure for example influencing what we think, what we belief and what we know. As an example, people who live in the east of Ukraine are mostly Russian-speaking. This is mainly due to the fact that these areas can only consume Russian media due to the strong influence of Russia. This isolation means that the eastern population suffers from a lack of information and sympathizes with Russia through targeted propaganda measures. [Bae 18, Pg. 14]. Also, many cyber-attacks on the Ukrainian government as well as the failures caused by cyber-attacks have contributed to the inhabitants loss of trust in their government. These attacks are increasing the sense of chaos and doubts about the ability of the government to ensure security and order. This also means that our open, networked world is being questioned by many people. Some societies believe that the best way to respond to change is to build walls to protect in isolation. In this way we lose much of our networked world, not only material but also human.</p>
+<p>The attacks on power grids in Ukraine are the first of their kind that have been proven to cause power outages.  The blackouts are not just isolated attacks. They were part of a digital blitzkrieg that has lasted for years in Ukraine. [Gre 18] Attacks of this kind can take place more frequently in the future and also outside Ukraine. This includes critical infra-structures such as hospitals and defence infrastructure. The former president of the USA Barack Obama said that the security requirements concerning critical infra structures are the most serious challenges of today. [SK 17, Pg. 3]. NotPetya was an attack which cost estimated $10 billion to clean up — It was “as close to cyberwar” as we’ve come. [Cer 19] This attack offers a perfect example of the potential extent of damage considered critical infrastructure as a target. The complete attack scenario is discussed in detail in the NotPetya section.</p>
+<h3 id="22-attack-attribution">2.2 Attack attribution</h3>
+<p>The attribution of attacks remains still complicated to the fact that technical evidence may have been manipulated in a certain way in order to incriminate others or hide information. It is especially complicated in the case of Ukraine due to the mass and impact of occurred attacks, but also to the high technical level that was used by the attackers to perform and hide their actions. Also, the distinction between state and non-state actors remains unclear, since the state can deny any relation to the affected group. Tools are often shared and publicly available. Therefore, there is no way to attribute their usage to a specific group. [Bae 18, Pg.12]</p>
+<h2 id="3-historical-background">3. Historical background</h2>
+<p>This section discusses the historical background which led to the occurred events in Ukraine. It focuses on the most relevant cyber-war related events that occurred in Ukraine and explains their origin.  It will also show how Russia developed their cyber capabilities over the past decade up to the year 2017 when an attack was performed that’s impact reached an unpredictable and unprecedented damage potential.</p>
+<p>Ukraine has been locked in a grinding, undeclared war with Russia. It has become a <em>“hotspot”</em> for cyberattacks, meaning that the cyber-aspects of the conflict with Russia relates to a series of actions taken in that context by states or non-state actors in cyberspace.</p>
+<p>With the fall of the Soviet Union the Ukrainian People’s Republic proclaimed their independence on 24 August 1991. Russian government still continued to maintain certain influence and control over former Soviet Republics especially over the Ukraine.</p>
+<p>At the end of 2013, there were violently repressed protests by the people due that the Ukrainian President Yanukovych stopped the association agreement with the EU. [LpB 19] The Agreement would have strengthened the relation between the Ukraine and EU enormously.  Through the disputes several demonstrators are dying as a result of the violent riots. At that time the Ukraine also becomes target of several DDoS-attacks which affected institutions websites and cell phones of members of Parliament. [Bae 18, Pg. 7]</p>
+<p>In 2014 the majority of Russian-speaking citizens of the Crimea decided in a controversial referendum to join Russia. [LpB 19] To achieve a majority the Crimea was intervened by the Russian military. Strategic important infrastructure like various airports were seized by non-uniformed soldiers, also electricity and drinking water was only severely limited. To isolate the Ukrainian military on the peninsula Russian forces cut off telephone cables and interrupted communication channels. Also, in 2014 servers of the Central Election Commission got infected with malware. The malware was removed by the Ukrainian cyber emergency response just in time before the election. [Gor 14]</p>
+<p>On December 23, 2015, the first known successful cyberattack on an energy company took place in Ukraine. The invaders were able to shut off the power supply for six hours by using the so-called BlackEnergy malware. Approximately 250,000 inhabitants and companies around the Ukrainian capital of Kiev were affected by this attack. [SK 17, Pg. 1] The exciting thing about this attack is that its potential size has been estimated to be much larger but it has not been fully utilized. Experts suggest that it was primarily a question of determining the extent and response to such an attack and not turning off the power grid in the long term. [SK 17, Pg. 2]</p>
+<p>A year later in December 2016, attackers managed to turn off the light in large parts of the Ukrainian main town of Kiev again. The attacks in 2016 and 2015 were not much different – the only distinction was that the blackout in 2016 became more complex by the fact that the attackers were able to develop more experience and better tools over time. [BBC 17]</p>
+<p>In 2017 the widest-reaching and the world’s most financially damaging attack took place. The attackers combined their knowledge of former power grid hacks with the so-called Petya malware and a vulnerability known as EternalBlue initially discovered by the U.S. National Security. The resulting malware “NotPetya” was used by the attackers to compromise the software of a small Ukrainian tech company called Linkos Group. The software, was widely used, giving hackers access to thousands of users and devices. The attack was the most damaging attack in history of a scale and cost. Its estimated damage and recovery measures amount to $10 billion. [Cer 19]</p>
+<p><img src="/img/digitalWarfareInUkraine/timeline_ukraine.png" alt="Image Timlene attacks Ukraine">
+<em>Figure 1: Timlene attacks on Ukraine</em></p>
+<h2 id="4-notpetya">4. NotPetya</h2>
+<p>Research has concluded that the attack of the Petya variant, which began on 27 June 2017, was intended more as a destructive attack on Ukraine than as a means for cybercriminals to make money on ransom. In other words, this attack was not for financial gain, it is a weapon disguised as ransomware.</p>
+<p>The release of NotPetya was an act of cyberwar by almost any definition - an attack that began, at least, as an assault on one nation by another. It was probably more explosive than even its creators intended. Within hours of its first appearance, the worm raced beyond Ukraine and out to countless machines around the world, from hospitals in Pennsylvania to a chocolate factory in Tasmania. [Gre 18]</p>
+<table>
+<thead>
+<tr>
+<th>List of the approximate damages reported by some of NotPetya biggest victims:</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$870,000,000</td>
+<td>Pharmaceutical company Merck</td>
+</tr>
+<tr>
+<td>$400,000,000</td>
+<td>Delivery company FedEx</td>
+</tr>
+<tr>
+<td>$384,000,000</td>
+<td>French construction company Saint-Gobain</td>
+</tr>
+<tr>
+<td>$300,000,000</td>
+<td>Danish shipping company Maersk</td>
+</tr>
+<tr>
+<td>$188,000,000</td>
+<td>Snack company Mondelēz</td>
+</tr>
+<tr>
+<td><strong>$10 Billion</strong></td>
+<td><strong>Total damages from NotPetya, as estimated by the White House</strong> [Gre 18]</td>
+</tr>
+</tbody>
+</table>
+<p>US intelligence agencies also confirmed in that Russia’s military, the prime suspect in any cyberwar attack targeting Ukraine, was responsible for launching the malicious code. Russia denies the hacking allegations. [SK 17, Pg. 2]</p>
+<h3 id="41-initial-vector">4.1 Initial Vector</h3>
+<p>The infections with NotPetya began with a software supply-chain threat. It was a legitimate updater of the document management software M.E.Doc, which is heavily used by Ukrainian companies, and companies operating in Ukraine, for maintaining information on tax and payroll accounting. [MSD 17]</p>
+<h3 id="42-propagation">4.2 Propagation</h3>
+<p>The older version of NotPetya called Petya (2016) required the victim to download it from a spam email, launch it, and give it admin permissions. “To date, it was simply the fastest-propagating piece of malware we’ve ever seen,” says Craig Williams, director of outreach at Cisco’s Talos division, one of the first security companies to reverse engineer and analyse Not­Petya. [Gre 18] However, NotPetya only takes a single infected machine to affect a whole network. The dissemination is done by several approaches:</p>
+<ul>
+<li>stealing credentials or re-using existing active sessions</li>
+<li>using file-shares to transfer the malicious file across machines on the same network</li>
+<li>using existing legitimate functionalities to execute the payload or abusing SMB vulnerabilities for unpatched machines</li>
+</ul>
+<p>The ransomware can spread by two exploits of the Microsoft Server Message Block (SMB). EternalBlue (CVE-2017-0144), the same exploit used by WannaCry and EternalRomance (CVE-2017-0145). Both exploits were developed by the United States NSA to take advantage of a flaw in the Windows implementation.</p>
+<p>It also is using a credential dumping tool similar to Mimikatz to find network administration credentials in the infected machine&rsquo;s memory. Then it uses the PsExec and WMIC tools built into Windows, to remotely access other computers on the local network and infect them as well. The combination of EternalBlue and Mimikatz is brilliant because the virus can infect computers that aren’t patched, and then can grab the passwords from those computers to infect other computers that are patched. Both vulnerabilities have been fixed by Microsoft in security update on March 14, 2017. [MSD 17]</p>
+<p>Research on Shodan (also known as search engine for the Internet of Things) shows that there are still about a million computers currently using the SMB v1 protocol and that the port can be reached from the internet.</p>
+<p><img src="/img/digitalWarfareInUkraine/digital_warfare_shodan.png" alt="Image Shodan SMB v1">
+<em>Figure 2: Ranking of threatened countries</em> [Kub 19]</p>
+<h3 id="43-encryption">4.3 Encryption</h3>
+<p>Once a system is successfully compromised, the malware will begin to perform a privilege check to determine what permissions the running account has. Based upon the privilege the malware will encrypt the victim system in one of two methods:</p>
+<p>If NotPetya is running on administrative privileges it will attempt to encrypt the Master File Table and the Master Boot Record of the hard drive (PhysicalDrive0). After modifying the MBR, the system displays the following fake “chkdsk.exe” partition repair screen as it encrypts the hard drive, shown below in Figure 2. [MSD 17]</p>
+<p><img src="/img/digitalWarfareInUkraine/Malware_output.png" alt="Image Output">
+<em>Figure 3: False CHKDSK Output from Malware MBR Code</em> [MSD 17]</p>
+<p>If overwriting the boot sector fails the NotPetya’s wiper function irrevocably destroys the first ten sectors of the drive. Additionally, if it finds an anti-virus process-hash on the system, it will also wipe the first ten sectors of the disk drive. [Sui 17]</p>
+<p>After completing its encryption routine, the end user cannot get back into Windows. Instead they see a ransom note (Figure 3) called README.TXT. This happens because NotPetya encrypted the MBR, thereby breaking the normal Windows boot process.</p>
+<p><img src="/img/digitalWarfareInUkraine/notPetya_Encrypted.png" alt="Image NotPetya Encrypted">
+<em>Figure 4: Screenshot of a system compromised by NotPetya</em> [MSD 17]</p>
+<h3 id="44-decryption">4.4 Decryption</h3>
+<p>In the previous version called Petya the installation ID contains crucial information for the key recovery to extract the decryption key. However, NotPetya did not intended the boot sector or the ten sectors that are wiped to be restorable. The ID shown in the ransom screen is just plain random data. Additionally, the design of the attack suggests that it was carried out by a technically skilled group of cybercriminals, yet the execution of the ransomware and payment methodology showed little to no expertise or intent to produce financial gains. Thus, it is designed to permanently disable as many machines as possible, rather than as a tool for financial gain. [Sui 17]</p>
+<h2 id="5-effects">5. Effects</h2>
+<p>Cyber-activities conducted in a particular place do not only affect the country on a domestic level, but may also have major international repercussions. A perfect example of this is the presented NotPetya malware, which originated in a Ukrainian software company and has spread rapidly worldwide.</p>
+<blockquote>
+<p><em>NotPetya &ldquo;was when everybody realized how vulnerable we are when Ukraine gets hit,&rdquo; Maigre, the former head of NATO’s cyber defence centre.</em> [Cer 19]</p>
+</blockquote>
+<p>That&rsquo;s why in 2017, Ukraine hosted the first Global Cybersecurity Summit (GCS), an international gathering of over 500 experts in computer technology, policy and business. The goal was to address the critical issues of cybersecurity, but also to discuss prevention measures.</p>
+<p>One of the key findings of the meeting was the lack of skilled labour in the national context. the existing talent gap between nations needs to be addressed. For example, Russia has three times more computer science experts than India, even though India has ten times as many inhabitants. [Pat 17]</p>
+<p>Further findings were that there are three basic components to achieve cyber-defence on a global scale:</p>
+<ul>
+<li>
+<p>First, cooperation is important as technology spreads across national borders. Cybersecurity requires a collective response from all groups who need to proactively work together. It is the task of the global actors to exchange information.</p>
+</li>
+<li>
+<p>Secondly, it is important to set international laws and standards for technologies, so that there is at least a floor on how people behave and act. As an example, more IoT devices from different manufacturers and firmware with different security protocol types will be used. These devices often serve attackers as backdoor for the company itself or as in the case of NotPetya as gateway to other companies. A good policy must be established that promotes innovation while enforcing security for devices.</p>
+</li>
+<li>
+<p>The last point is deterrence: Businesses and government organizations must be willing and able to impose costs on entities and groups that use offensive cyber weapons and malware for illegal purposes.</p>
+</li>
+</ul>
+<p><em>“These steps won&rsquo;t eliminate all vulnerabilities, but they will drive down hacks and slow down proliferation”</em>. Antony Blinken - Former US Deputy Secretary of State [Pat 17]</p>
+<h2 id="6-policy-consequences">6. Policy Consequences</h2>
+<p>This section proposes conclusions that can be taken over to reduce risks and increase protection against cyber-activities with references to the ISO standard series. The protection against this cybercrime involves a set of security layers. Companies should look towards not only technology, but also people and process-like solutions.</p>
+<hr>
+<p>Contact with special interest groups - Control A.6.1.4</p>
+<p><em>As mentioned before the fight against cyberweapons is a global challenge. The events that have taken place in Ukraine can help to make systems safer in the future. Information exchange with special interest groups or other specialist security forums and professional associations shall be maintained to remain abreast with emerging threats &amp; vulnerabilities.</em></p>
+<hr>
+<p>Access to Networks and Network Services - Control A.9.1.2</p>
+<p><em>Companies should implement controls using the concept of least privilege. By limiting the permissions and access of privileged accounts, companies can reduce the impact of credentials theft. As an example, Domain Admins should be limited to only being able to authenticate to the Domain Controllers. In the same design, a group of server admins should be created and should only be able to authenticate to servers that they need to administrate.</em></p>
+<hr>
+<p>Information backup - Control A.12.3.1</p>
+<p><em>As described in the objectives of this control, “Backup copies …shall be taken and tested regularly.” The ransomware has the ability to spread up to network drives and security copies. Back up data to multiple locations, ensuring proper segmentation. Validation of these copies is essential to ensure the success of restore when necessary.</em></p>
+<hr>
+<p>Segregation in networks - Control A.13.1.3</p>
+<p><em>The rapid proliferation of file encryption on the network caused by ransomware can be locked if the network is organized by segments, rather than being accessible all together. As an example, the backup system should have a specific account that it can use to access the systems it is protecting, but no account from those systems should have access to the backup server. This way credentials that are stolen from production systems will not be able to be used to destroy the backup data.</em></p>
+<hr>
+<p>Controls against malware - Control A.12.2.1</p>
+<p><em>Nevertheless, it is not possible to prevent every type of malware that can attack a company, but anti-malware software is getting better at recognizing and fighting ransomware attacks.</em></p>
+<hr>
+<p>Event logging - Control A.12.4.1</p>
+<p><em>As I mentioned, this is a sophisticated malware. The system’s behaviour analysis may be crucial for its timely detection. Monitoring capability allows teams to detect attackers earlier in the attack chain and respond more effectively. This control suggests not only the creation of event logs, but also regular reviews.</em></p>
+<h2 id="7-conclusion">7. Conclusion</h2>
+<p>Based on the attacks that have taken place in Ukraine, the technical progress of cyber-attacks can be examined very well. NotPetya was able to spread itself automatically and thereby cause enormous damage. Looking at technological progress, such as artificial intelligence and the networking of IoT devices, it becomes clear that these technologies are also well-suited for destructive purposes. In the future, self-learning- and spreading cyber weapons can be one of these results. As a result of the variety of problems, there is not a single organization, government or company that can provide the right solution to this problem. The best way to protect from future challenges is observe, analyse incidents and discuss them on a global scale.</p>
+<h2 id="references">References</h2>
+<p>[LpB 19]	Ukraine-Konflikt - Nervenkrieg um die Ukraine, 	Landeszentrale für politische Bildung BW, Web, last access: 26.10.2019, URL <a href="https://www.lpb-bw.de/ukrainekonflikt.html">https://www.lpb-bw.de/ukrainekonflikt.html</a></p>
+<p>[Pat 17]	Dan Patterson, Ukraine is a test bed for global cyberattacks that will target major infrastructure, TechRepublic, Web, Web, last access: 16.10.2019, URL <a href="https://www.techrepublic.com/article/ukraine-is-a-test-bed-for-global-cyberattacks-that-will-target-major-infrastructure/">https://www.techrepublic.com/article/ukraine-is-a-test-bed-for-global-cyberattacks-that-will-target-major-infrastructure/</a></p>
+<p>[SK 17]		Julia E. Sullivana and Dmitriy Kamensky, How cyber-attacks in Ukraine show the vulnerability of the U.S. power grid, The Electricity Journal, Web, last access: 16.10.2019, URL <a href="https://www.sciencedirect.com/science/article/pii/S1040619017300507">https://www.sciencedirect.com/science/article/pii/S1040619017300507</a></p>
+<p>[Bae 18] 	Marie Baezner, Hotspot Analysis: Cyber and Information warfare in the Ukrainian conflict, CSS CYBER DEFENSE PROJECT, Web, last access: 16.10.2019, URL <a href="https://css.ethz.ch/content/dam/ethz/specialinterest/gess/cis/center-for-securities-studies/pdfs/20181003_MB_HS_RUS-UKR%20V2_rev.pdf">https://css.ethz.ch/content/dam/ethz/specialinterest/gess/cis/center-for-securities-studies/pdfs/20181003_MB_HS_RUS-UKR%20V2_rev.pdf</a></p>
+<p>[BBC 17]	BBC News, Ukraine power cut &lsquo;was cyber-attack&rsquo;, BBC News, Web, last access: 26.10.2019, URL <a href="https://www.bbc.com/news/technology-38573074">https://www.bbc.com/news/technology-38573074</a>
+[Cer 19]	Laurens Cerulus, How Ukraine became a test bed for cyberweaponry, POLITICO, Web, last access: 29.10.2019, URL <a href="https://www.politico.eu/article/ukraine-cyber-war-frontline-russia-malware-attacks/">https://www.politico.eu/article/ukraine-cyber-war-frontline-russia-malware-attacks/</a></p>
+<p>[MSD 17]	Microsoft Defender ATP Research Team, New ransomware, old techniques: Petya adds worm capabilities, Microsoft, Web, last access: 25.11.2019, URL <a href="https://www.microsoft.com/security/blog/2017/06/27/new-ransomware-old-techniques-petya-adds-worm-capabilities/?source=mmpc">https://www.microsoft.com/security/blog/2017/06/27/new-ransomware-old-techniques-petya-adds-worm-capabilities/?source=mmpc</a></p>
+<p>[Chi 17]	 Alexander Chiu, New Ransomware Variant &ldquo;Nyetya&rdquo; Compromises Systems Worldwide, Talos Threat Source Newsletters, Web, last access: 25.11.2019, URL <a href="https://blog.talosintelligence.com/2017/06/worldwide-ransomware-variant.html">https://blog.talosintelligence.com/2017/06/worldwide-ransomware-variant.html</a></p>
+<p>[Gor 14]	Michael R. Gordon, NATO Commander Says He Sees Potent Threat From Russia, The New York Times, Web, last access: 26.10.2019, URL <a href="https://www.nytimes.com/2014/04/03/world/europe/nato-general-says-russian-force-poised-to-invade-ukraine.html">https://www.nytimes.com/2014/04/03/world/europe/nato-general-says-russian-force-poised-to-invade-ukraine.html</a></p>
+<p>[AL 15]		Michael J. Assante and Robert M. Lee, Information Security Reading Room: The Industrial Control SystemCyber Kill Chain, SANS Institute, Web, last access: 05.15.2019, URL <a href="https://www.sans.org/reading-room/whitepapers/ICS/industrial-control-system-cyber-kill-chain-36297">https://www.sans.org/reading-room/whitepapers/ICS/industrial-control-system-cyber-kill-chain-36297</a></p>
+<p>[Sui 17]	Matt Suiche, Petya.2017 is a wiper not a ransomware, Web, last access: 05.12.2019, URL <a href="https://blog.comae.io/petya-2017-is-a-wiper-not-a-ransomware-9ea1d8961d3b">https://blog.comae.io/petya-2017-is-a-wiper-not-a-ransomware-9ea1d8961d3b</a></p>
+<p>[Gre 18]	Andy Greenberg, The Untold Story of NotPetya, the Most Devastating Cyberattack in History, WIRED, Web, last access: 27.11.2019, URL , Web, last access: 27.11.2019, URL  <a href="https://www.wired.com/story/notpetya-cyberattack-ukraine-russia-code-crashed-the-world/#">https://www.wired.com/story/notpetya-cyberattack-ukraine-russia-code-crashed-the-world/#</a></p>
+<p>[Kub 19]	Ondrej Kubovič, EternalBlue Exploit seit WannaCryptor‑Ausbruch populär wie nie, welivesecurity, Web, last access: 27.11.2019, URL <a href="https://www.welivesecurity.com/deutsch/2019/05/17/eternalblue-exploit-peak-wannacryptor/">https://www.welivesecurity.com/deutsch/2019/05/17/eternalblue-exploit-peak-wannacryptor/</a></p>
+<p>[Wed 15]	Jen Weedon, Beyond ‘Cyber War’: Russia’s Use of Strategic Cyber Espionage and Information Operations in Ukraine, NATO CCD COE Publications, Web, last access: 30.10.2019, URL <a href="https://ccdcoe.org/uploads/2018/10/Ch08_CyberWarinPerspective_Weedon.pdf">https://ccdcoe.org/uploads/2018/10/Ch08_CyberWarinPerspective_Weedon.pdf</a></p>
+<p>[Sam 15]	Robert J. Samuelson, Could an attack on the electric grid mean cybergeddon? Washington Post, The Washington Post, Web, last access: 05.12.2019, URL <a href="https://www.washingtonpost.com/opinions/could-an-attack-on-the-electric-grid-mean-cybergeddon/2015/12/06/52371aa2-9ace-11e5-8917-653b65c809eb_story.html">https://www.washingtonpost.com/opinions/could-an-attack-on-the-electric-grid-mean-cybergeddon/2015/12/06/52371aa2-9ace-11e5-8917-653b65c809eb_story.html</a></p>
+
+    </div>
+    
+      
+        <div class="pagination">
+          <div class="pagination__title">
+            <span class="pagination__title-h">Read other posts</span>
+            <hr />
+          </div>
+          <div class="pagination__buttons">
+            
+              <span class="button previous">
+                <a href="https://T0XICITY.com/blog/xss-game/">
+                  <span class="button__icon">←</span>
+                  <span class="button__text">Google XSS Challenge</span>
+                </a>
+              </span>
+            
+            
+          </div>
+        </div>
+      
+    
+
+
+    
+      
+        
+
+      
+    
+
+    </div>
+
+      </div>
+
+      
+        <footer class="footer">
+    <div class="footer__inner">
+        
+        <a href="/" class="logo" style="text-decoration: none;">
+  
+    <span class="logo__mark"><svg xmlns="http://www.w3.org/2000/svg" class="greater-icon" viewBox="0 0 44 44">
+  <path fill="none" d="M15 8l14.729 14.382L15 35.367"/>
+</svg>
+</span>
+    <span class="logo__text">T0XICITY</span>
+    <span class="logo__cursor"></span>
+  
+</a>
+
+        
+    </div>
+</footer>
+
+<script src="https://T0XICITY.com/assets/main.js"></script>
+<script src="https://T0XICITY.com/assets/prism.js"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<div style="font-size: 2rem;">
+<a style="text-decoration:none;" href="https://github.com/T0XICITY" target="_blank" rel="noopener" class="fa fa-github"></a>
+<a style="text-decoration:none" href="https://twitter.com/t0xicity__"target="_blank" rel="noopener" class="fa fa-twitter"></a>
+<a style="text-decoration:none" href="mailto:klingenbergpa95@gmail.com" target="_blank" rel="noopener" class="fa fa-envelope"></a>
+</div>
+
+
+<div class="copyright copyright--user">© 2020 Patrick Klingenberg </div>
+
+<span ><a style="text-decoration:none" href="/privacy">Imprint / Contact / Privacy</a> </span>
+
+<div style="font-size: 0.8rem;line-height: 2rem;">
+    <span> Powered by <a style="text-decoration:none" href="https://gohugo.io" target="_blank" rel="noopener">Hugo | </a></span>
+    <span>Theme created by <a style="text-decoration:none" href="https://twitter.com/panr" target="_blank" rel="noopener">panr</a></span>
+</div>
+      
+    </div>
+
+    
+  </body>
+</html>
