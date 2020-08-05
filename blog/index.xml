@@ -7,10 +7,20 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Patrick Klingenberg</copyright>
-    <lastBuildDate>Tue, 28 Apr 2020 21:04:06 +0100</lastBuildDate>
+    <lastBuildDate>Mon, 03 Aug 2020 11:57:05 +0100</lastBuildDate>
     
 	<atom:link href="https://T0XICITY.com/blog/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Cuckoo Sandbox Installation Guide</title>
+      <link>https://T0XICITY.com/blog/cuckoo_sandbox/</link>
+      <pubDate>Mon, 03 Aug 2020 11:57:05 +0100</pubDate>
+      
+      <guid>https://T0XICITY.com/blog/cuckoo_sandbox/</guid>
+      <description>Cuckoo Sandbox Cuckoo Sandbox is an Open Source software for automating analysis of suspicious files. To do so it makes use of custom components that monitor the behavior of the malicious processes while running in an isolated environment.
+This manual describes the installation of the Cuckoo Sandbox and its modules. The manual is strongly based on the official documentation of the Cuckoo Sandbox. Nevertheless, some changes have been made, some passages have been shortened or extended to fit the host system.</description>
+    </item>
     
     <item>
       <title>Google XSS Challenge</title>

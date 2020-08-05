@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-	<meta name="generator" content="Hugo 0.65.3" />
     
-      <title>T0XICITY — Wannabe h4x0r</title>
+      <title>Cuckoo Sandbox Installation Guide :: T0XICITY — Wannabe h4x0r</title>
     
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-<meta name="description" content="Wannabe h4x0r"/>
+<meta name="description" content="Cuckoo Sandbox Cuckoo Sandbox is an Open Source software for automating analysis of suspicious files. To do so it makes use of custom components that monitor the behavior of the malicious processes while running in an isolated environment.
+This manual describes the installation of the Cuckoo Sandbox and its modules. The manual is strongly based on the official documentation of the Cuckoo Sandbox. Nevertheless, some changes have been made, some passages have been shortened or extended to fit the host system."/>
 <meta name="keywords" content="hacking, bash, linux, ctf"/>
 <meta name="robots" content="noodp"/>
-<link rel="canonical" href="https://T0XICITY.com/" />
+<link rel="canonical" href="https://T0XICITY.com/blog/cuckoo_sandbox/" />
 
 
 
@@ -27,20 +27,20 @@
 
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="T0XICITY"/>
-<meta name="twitter:description" content=""/>
+<meta name="twitter:title" content="Cuckoo Sandbox Installation Guide"/>
+<meta name="twitter:description" content="This article is a guide for the installation of the Cuckoo sandbox "/>
 
 
 
-<meta property="og:title" content="T0XICITY" />
-<meta property="og:description" content="" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://T0XICITY.com/" />
-<meta property="og:updated_time" content="2020-08-03T11:57:05+01:00" /><meta property="og:site_name" content="T0XICITY" />
+<meta property="og:title" content="Cuckoo Sandbox Installation Guide" />
+<meta property="og:description" content="This article is a guide for the installation of the Cuckoo sandbox " />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://T0XICITY.com/blog/cuckoo_sandbox/" />
+<meta property="article:published_time" content="2020-08-03T11:57:05+01:00" />
+<meta property="article:modified_time" content="2020-08-03T11:57:05+01:00" /><meta property="og:site_name" content="T0XICITY" />
 
 
 
-<link rel="alternate" type="application/rss+xml" href="/index.xml" title="T0XICITY" />
 
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -133,119 +133,70 @@
   
   
 
-  
-  
+  <div class="post">
+    <h2 class="post-title"><a href="https://T0XICITY.com/blog/cuckoo_sandbox/">Cuckoo Sandbox Installation Guide</a></h2>
+    <div class="post-meta">
+      
+        <span class="post-date">
+          2020-08-03
+        </span>
 
-    
-  
-  
-
-  <div class="posts">
-    
-    <div class="post on-list">
-      <h1 class="post-title"><a href="https://T0XICITY.com/blog/cuckoo_sandbox/">Cuckoo Sandbox Installation Guide</a></h1>
-      <div class="post-meta">
         
-          <span class="post-date">
-            2020-08-03
-          </span>
-
           
         
-        <span class="post-author">— Written by Patrick</span>
-        
-      </div>
-
       
 
-      
-        
-          <img src="https://T0XICITY.com/img/cuckoo_sandbox/cuckoo-large5.png" class="post-cover" />
-        
-      
-
-      <div class="post-content">
-        
-          This article is a guide for the installation of the Cuckoo sandbox
-        
-      </div>
-      
-        <div><a class="read-more button" href="/blog/cuckoo_sandbox/">Read more →</a></div>
+      <span class="post-author">— Written by Patrick</span>
       
     </div>
+
     
-    <div class="post on-list">
-      <h1 class="post-title"><a href="https://T0XICITY.com/blog/xss-game/">Google XSS Challenge</a></h1>
-      <div class="post-meta">
-        
-          <span class="post-date">
-            2020-04-28
-          </span>
 
-          
-        
-        <span class="post-author">— Written by Patrick</span>
-        
-      </div>
+    
+      
+        <img src="https://T0XICITY.com/img/cuckoo_sandbox/cuckoo-large5.png" class="post-cover" />
+      
+    
 
-      
+    <div class="post-content">
+      <h1 id="cuckoo-sandbox">Cuckoo Sandbox</h1>
+<p>Cuckoo Sandbox is an Open Source software for automating analysis of suspicious files. To do so it makes use of custom components that monitor the behavior of the malicious processes while running in an isolated environment.</p>
+<p>This manual describes the installation of the Cuckoo Sandbox and its modules. The manual is strongly based on the official documentation of the Cuckoo Sandbox. Nevertheless, some changes have been made, some passages have been shortened or extended to fit the host system. 
+The Official Documentation can be found at <a href="https://cuckoo.sh/docs/">https://cuckoo.sh/docs/</a></p>
+<p>The basic architecture of the system used for this is as follows:</p>
 
-      
-        
-          <img src="https://T0XICITY.com/img/googleXSSCtf/googleXSSChallenge.jpg" class="post-cover" />
-        
-      
-
-      <div class="post-content">
-        
-          Writeup of Googles beginner XSS-Game
-        
-      </div>
-      
-        <div><a class="read-more button" href="/blog/xss-game/">Read more →</a></div>
-      
     </div>
     
-    <div class="post on-list">
-      <h1 class="post-title"><a href="https://T0XICITY.com/blog/digital_warfare_ukraine/">Digital warfare in Ukraine</a></h1>
-      <div class="post-meta">
-        
-          <span class="post-date">
-            2020-01-03
-          </span>
+      
+        <div class="pagination">
+          <div class="pagination__title">
+            <span class="pagination__title-h">Read other posts</span>
+            <hr />
+          </div>
+          <div class="pagination__buttons">
+            
+            
+              <span class="button next">
+                <a href="https://T0XICITY.com/blog/xss-game/">
+                  <span class="button__text">Google XSS Challenge</span>
+                  <span class="button__icon">→</span>
+                </a>
+              </span>
+            
+          </div>
+        </div>
+      
+    
 
-          
+
+    
+      
         
-        <span class="post-author">— Written by Patrick</span>
-        
-      </div>
 
       
+    
 
-      
-        
-          <img src="https://T0XICITY.com/img/digitalWarfareInUkraine/digtal_warfare_in_Ukraine.jpg" class="post-cover" />
-        
-      
-
-      <div class="post-content">
-        
-          This report deals with digital warfare at the example of cyber activities conducted in the Ukrainian conflict. It will highlight the impact of the malware attack NotPetya.
-        
-      </div>
-      
-        <div><a class="read-more button" href="/blog/digital_warfare_ukraine/">Read more →</a></div>
-      
     </div>
-    
-    <div class="pagination">
-  <div class="pagination__buttons">
-    
-    
-  </div>
-</div>
-
-  </div>
 
       </div>
 
