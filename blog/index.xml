@@ -18,8 +18,8 @@
       <pubDate>Mon, 03 Aug 2020 11:57:05 +0100</pubDate>
       
       <guid>https://T0XICITY.com/blog/cuckoo_sandbox/</guid>
-      <description>Cuckoo Sandbox Cuckoo Sandbox is an Open Source software for automating analysis of suspicious files. To do so it makes use of custom components that monitor the behavior of the malicious processes while running in an isolated environment.
-This manual describes the installation of the Cuckoo Sandbox and its modules. The manual is strongly based on the official documentation of the Cuckoo Sandbox. Nevertheless, some changes have been made, some passages have been shortened or extended to fit the host system.</description>
+      <description>Cuckoo Sandbox The Cuckoo Sandbox is an open source software for automatic analysis of suspicious files. It uses custom components that monitor the behavior of malicious processes while they are running in an isolated environment.
+This manual describes the installation of the Cuckoo Sandbox and its modules. Since setting up the sanbdox can sometimes cause a lot of difficulties I have found some useful workarounds for my issues, which I would like to publish here.</description>
     </item>
     
     <item>

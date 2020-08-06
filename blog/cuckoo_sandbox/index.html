@@ -6,8 +6,8 @@
     
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-<meta name="description" content="Cuckoo Sandbox Cuckoo Sandbox is an Open Source software for automating analysis of suspicious files. To do so it makes use of custom components that monitor the behavior of the malicious processes while running in an isolated environment.
-This manual describes the installation of the Cuckoo Sandbox and its modules. The manual is strongly based on the official documentation of the Cuckoo Sandbox. Nevertheless, some changes have been made, some passages have been shortened or extended to fit the host system."/>
+<meta name="description" content="Cuckoo Sandbox The Cuckoo Sandbox is an open source software for automatic analysis of suspicious files. It uses custom components that monitor the behavior of malicious processes while they are running in an isolated environment.
+This manual describes the installation of the Cuckoo Sandbox and its modules. Since setting up the sanbdox can sometimes cause a lot of difficulties I have found some useful workarounds for my issues, which I would like to publish here."/>
 <meta name="keywords" content="hacking, bash, linux, ctf"/>
 <meta name="robots" content="noodp"/>
 <link rel="canonical" href="https://T0XICITY.com/blog/cuckoo_sandbox/" />
@@ -160,10 +160,116 @@ This manual describes the installation of the Cuckoo Sandbox and its modules. Th
 
     <div class="post-content">
       <h1 id="cuckoo-sandbox">Cuckoo Sandbox</h1>
-<p>Cuckoo Sandbox is an Open Source software for automating analysis of suspicious files. To do so it makes use of custom components that monitor the behavior of the malicious processes while running in an isolated environment.</p>
-<p>This manual describes the installation of the Cuckoo Sandbox and its modules. The manual is strongly based on the official documentation of the Cuckoo Sandbox. Nevertheless, some changes have been made, some passages have been shortened or extended to fit the host system. 
-The Official Documentation can be found at <a href="https://cuckoo.sh/docs/">https://cuckoo.sh/docs/</a></p>
+<p>The Cuckoo Sandbox is an open source software for automatic analysis of suspicious files. It uses custom components that monitor the behavior of malicious processes while they are running in an isolated environment.</p>
+<p>This manual describes the installation of the Cuckoo Sandbox and its modules. Since setting up the sanbdox can sometimes cause a lot of difficulties I have found some useful workarounds for my issues, which I would like to publish here. The manual is strongly based on the official documentation of the Cuckoo Sandbox. Nevertheless some changes have been made, some passages have been shortened or extended to fit the host system.</p>
+<p>The Official Documentation can be found at <a href="https://cuckoo.sh/docs/">https://cuckoo.sh/docs/</a></p>
 <p>The basic architecture of the system used for this is as follows:</p>
+<h2 id="1-host-system-requirements">1. Host system requirements</h2>
+<p>The following describes the requirements for installing Cuckoo on the system.</p>
+<p>My configuration of the system is as follows:</p>
+<ul>
+<li>VMware Workstation Pro</li>
+<li>Ubuntu 20.04 LTS</li>
+<li>8Gb ram</li>
+<li>At least 200GB memory</li>
+<li>Virtualbox 6.1.6</li>
+<li>Cuckoo Sandbox v2.0.7</li>
+</ul>
+<p><img src="/img/cuckoo_sandbox/cuckoo_basic_arch1.png" alt="Image Cuckoo-Machine-Architecture"></p>
+<h2 id="2-cuckoo-and-vmcloak-installation">2. Cuckoo and VMCloak installation</h2>
+<p>Unfortunately Cuckoo does not yet work as a standalone product. For this reason, the installation requires several software packages to be installed. In the following all necessary packages for the startup of Cuckoo and the tool Vmcloak will be installed.</p>
+<p>Bring the system up to date:</p>
+<pre><code class="language-console" data-lang="console">sudo apt-get update 
+sudo apt-get upgrade -y 
+sudo apt-get dist-upgrade -y 
+sudo apt-get autoremove -y 
+</code></pre><p>Installation of Python libraries which are necessary for VMCloak and Cuckoo:</p>
+<pre><code class="language-console" data-lang="console">sudo apt-get install python3 python3-pip python-dev libffi-dev libssl-dev -y 
+sudo apt-get install libjpeg-dev zlib1g-dev swig -y
+sudo apt-get install python3-virtualenv -y
+</code></pre><p>Adding the user Cuckoo:
+For security reasons, malware analysis is performed on a low privileged user (cuckoo).</p>
+<pre><code class="language-console" data-lang="console">sudo adduser cuckoo
+</code></pre><p>Installation of the required database:</p>
+<pre><code class="language-console" data-lang="console">sudo apt-get install mongodb -y
+</code></pre><p>Installation and configuration of TCP-Dump as a tool for network analysis:</p>
+<pre><code class="language-console" data-lang="console">sudo apt-get install tcpdump apparmor-utils -y
+sudo aa-disable /usr/sbin/tcpdump
+</code></pre><p>Installation of Virtualbox:</p>
+<pre><code class="language-console" data-lang="console">sudo apt-get install virtualbox -y
+</code></pre><p>Add the Cuckoo user to groups:</p>
+<pre><code class="language-console" data-lang="console">sudo usermod -a -G vboxusers cuckoo
+sudo groupadd pcap
+sudo usermod -a -G pcap cuckoo
+sudo chgrp pcap /usr/sbin/tcpdump
+sudo setcap cap_net_raw,cap_net_admin=eip /usr/sbin/tcpdump
+</code></pre><p>Create a virtual environment:</p>
+<pre><code class="language-console" data-lang="console">sudo su cuckoo
+virtualenv -p python2.7 ~/cuckoo
+. ~/cuckoo/bin/activate
+# The virtual environment can be left with the command exit.
+</code></pre><p>Install Cuckoo and VMCloak within the virtual cuckoo environment:</p>
+<pre><code class="language-console" data-lang="console">pip install -U cuckoo vmcloak
+cuckoo init
+cuckoo community –force
+</code></pre><h4 id="-ab-hier-sollte-cuckoo-laufen">!!!!! ab hier sollte cuckoo laufen</h4>
+<h2 id="3-creation-of-the-base-virtual-machine">3. Creation of the Base-Virtual Machine</h2>
+<p>The previously installed tool Vmcloak is used to create virtual machines. This tool enables an automatic generation of analysis systems.</p>
+<p>For this purpose, an ISO file is required, which is then written to a mount accessible to the user Cuckoo.</p>
+<p>Download Windows ISO file</p>
+<pre><code class="language-console" data-lang="console">sudo wget https://cuckoo.sh/win7ultimate.iso
+</code></pre><p>Directory Mounting</p>
+<pre><code class="language-console" data-lang="console">sudo mkdir /mnt/win7
+sudo chown cuckoo:cuckoo /mnt/win7
+sudo mount -o ro,loop win7ultimate.iso /mnt/win7
+</code></pre><p>Creation of the base virtual machine
+For the automatic generation of the analysis system, you must first switch to the virtual environment.</p>
+<pre><code class="language-console" data-lang="console">. ~/cuckoo/bin/activate
+</code></pre><p>Configuring VirtualBox Host-Only Network Adapter</p>
+<pre><code class="language-console" data-lang="console">vmcloak-vboxnet0
+</code></pre><p>Creating the default virtual machine<br>
+The Default VM serves as a basis for the creation of future virtual analysis machines. Thus, future VMs do not have to be created first, but can be simply cloned from the base VM quickly.<br>
+The syntax is as follows:</p>
+<pre><code class="language-console" data-lang="console">vmcloak init &lt;os flag&gt; &lt;vmname&gt; &lt;options&gt;
+vmcloak init --verbose --win7x64 win7x64Base --cpus 2 --ramsize 2048
+</code></pre><h3 id="windows10-systems">Windows10 systems:</h3>
+<p>It is important to note that at the time of writing the document, current versions of Windows are not supported. For this reason, an older version of Windows should be used to create the system.</p>
+<p>Windows can be obtained from the following website: <a href="https://tb.rg-adguard.net/public.php">https://tb.rg-adguard.net/public.php</a></p>
+<p>In my case the following Windows 10 version is used:<br>
+Windows 10, Version 1809 – Redstone 5</p>
+<p><img src="/img/cuckoo_sandbox/cuckoo_win10.png" alt="Image win10-Version-Cuckoo"></p>
+<p>The setup of the Windows10 machine can be started in the same way as the creation of the Win7 machine with the following command.</p>
+<pre><code class="language-console" data-lang="console">vmcloak init --win10x64 win10x64base --cpus 2 --ramsize 2048 --serial-key XXXXX-XXXXX-XXXXX-XXXXX-XXXXX --product pro--ramsize 2048
+</code></pre><p>Once Vmcloak has finished creating the base VM, the next step is to clone the Base-VM to any number of analysis VMs. As mentioned before, the Base-VM is not used to analyze malware, but is used to clone additional analysis machines. The cloned systems are used for the analysis of malware, which ensures that a &ldquo;pure&rdquo; base system is available at all times.</p>
+<h2 id="4-creation-of-analysis-systems">4. Creation of analysis systems</h2>
+<p>The preferred way to add a new analysis machine to the Cuckoo Sandbox is cloning. This ensures that the default configurations such as the agent and network parameters are applied appropriately. This allows a fast and uncomplicated start of a new analysis system.</p>
+<p>Cloning of a machine using Vmcloak<br>
+The Vmcloack tool is used to clone a VM. 
+The syntax for cloning a virtual disk image (VDI) from an existing one is as follows:</p>
+<pre><code class="language-console" data-lang="console">vmcloak clone presentVDI newVDI
+</code></pre><p>This command creates a .vdi file under the /home/cuckoo/.vmcloak/image directory.</p>
+<h2 id="5-software-installation-on-analysis-systems">5. Software installation on analysis systems</h2>
+<p>The installation of additional software on the analysis systems is not necessary. However, in order to simulate the system environment of a user as realistically as possible, it is highly recommended. Malware often works/spreads in dependence of third party software. For this reason, standard software applications such as office products, readers and browsers are installed. Additionally, parameters such as activation of macros in Office products can be used to make the system even more vulnerable to malware.</p>
+<p>A software package can be installed using the following syntax:</p>
+<pre><code class="language-console" data-lang="console">vmcloak install &lt;image name&gt; &lt;package&gt;
+</code></pre><p>A specific version or serial key can be selected by:</p>
+<pre><code class="language-console" data-lang="console">package.version=X or package.serialkey=X. 
+</code></pre><p>If no version was selected, the latest version will be selected.</p>
+<p>I will install some basic software packages:</p>
+<pre><code class="language-console" data-lang="console">vmcloak install win10x64Cuckoo1 adobe9 wic pillow java7
+</code></pre><p>If you now want to install Office 2007, assuming that a valid serial key are available, you can do this as follows.</p>
+<pre><code class="language-console" data-lang="console">vmcloak install win10x64Cuckoo1 office2007 \office2007.isopath=/path/to/a.iso \office2007.serialkey=XXX-XXX
+</code></pre><p>If the installation using Vmcloak does not work, you should mount the installation ISO in the virtual machine drive as a workaround.</p>
+<p>The following steps are required for this:</p>
+<h2 id="6-creation-of-snapshots">6. Creation of snapshots</h2>
+<p>After creating the analysis system, a snapshot of the analysis system has to be created. The syntax for creating snapshots is as follows:</p>
+<pre><code class="language-console" data-lang="console">Vmcloack snapshot &lt;Machine name&gt; &lt;Snapshot name&gt; &lt;Static IP assignment
+vmcloak snapshot win7x64cuckoo Snap1 192.168.56.101
+</code></pre><p>After executing the command, the analysis system should be displayed in Virtualbox. If this is the case and no error message is displayed, the following section (6.1 Workarund Multi-attach) can be skipped.</p>
+<h3 id="61-workaround-for-the-error-message-cannot-multi-attatch-media">6.1 Workaround for the error message &ldquo;Cannot Multi-attatch media&rdquo;</h3>
+<p>If the following error occurs Cannot change type for medium: the media type &ldquo;Multiattach&rdquo;, this section provides a workaround. If the snapshot was created without causing problems, this section can be skipped.</p>
+<p>For starting all necessary services of the Cuckoo sandbox I have written a script which is executed as a cronjob when the system boots. I have put it on <a href="https://github.com/T0XICITY/cuckoo/blob/master/start_cuckoo.sh">GitHub</a> for all interested. Please note that you have to make changes to the ports and services if you want to use it.</p>
+<p>If you have come this far, i wish you a lot of fun with your brand new sandbox. Don&rsquo;t forget to check out the additional modules and extensions of the Cuckoo sandbox.</p>
 
     </div>
     
