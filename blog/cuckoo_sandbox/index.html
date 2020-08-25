@@ -168,14 +168,19 @@ This manual describes the installation of the Cuckoo Sandbox and its modules. Si
 <p>The following describes the requirements for installing Cuckoo on the system.</p>
 <p>My configuration of the system is as follows:</p>
 <ul>
-<li>VMware Workstation Pro</li>
-<li>Ubuntu 20.04 LTS</li>
-<li>8Gb ram</li>
+<li>VMWare ESXi</li>
+<li>Debian 10.0 Buster</li>
+<li>8GB Ram</li>
 <li>At least 200GB memory</li>
 <li>Virtualbox 6.1.6</li>
 <li>Cuckoo Sandbox v2.0.7</li>
 </ul>
-<p><img src="/img/cuckoo_sandbox/cuckoo_basic_arch1.png" alt="Image Cuckoo-Machine-Architecture"></p>
+<p><img src="/img/cuckoo_sandbox/architecture_cuckoo01.png" alt="Image Cuckoo-Machine-Architecture"></p>
+<p>It is important to provide the machine enough memory (min. 200GB), because the host system will be extended by multiple virtual analysis systems in the next steps.</p>
+<p>For this reason it is also absolutely necessary to make the following setting on the host system, enabling nested virtualization. 
+Nested virtualization can be activated in the CPU settings as shown in the following screenshot.</p>
+<p><img src="/img/cuckoo_sandbox/nestedVirt.png" alt="Image Nested virtualization"></p>
+<p>If the described requirements are met, the installation of cuckoo can be started.</p>
 <h2 id="2-cuckoo-and-vmcloak-installation">2. Cuckoo and VMCloak installation</h2>
 <p>Unfortunately Cuckoo does not yet work as a standalone product. For this reason, the installation requires several software packages to be installed. In the following all necessary packages for the startup of Cuckoo and the tool Vmcloak will be installed.</p>
 <p>Bring the system up to date:</p>
@@ -187,7 +192,7 @@ sudo apt-get autoremove -y
 <pre><code class="language-console" data-lang="console">sudo apt-get install python3 python3-pip python-dev libffi-dev libssl-dev -y 
 sudo apt-get install libjpeg-dev zlib1g-dev swig -y
 sudo apt-get install python3-virtualenv -y
-</code></pre><p>Adding the user Cuckoo:
+</code></pre><p>Adding the user Cuckoo:<br>
 For security reasons, malware analysis is performed on a low privileged user (cuckoo).</p>
 <pre><code class="language-console" data-lang="console">sudo adduser cuckoo
 </code></pre><p>Installation of the required database:</p>
@@ -211,11 +216,11 @@ virtualenv -p python2.7 ~/cuckoo
 </code></pre><p>Install Cuckoo and VMCloak within the virtual cuckoo environment:</p>
 <pre><code class="language-console" data-lang="console">pip install -U cuckoo vmcloak
 cuckoo init
-cuckoo community –force
-</code></pre><h4 id="-ab-hier-sollte-cuckoo-laufen">!!!!! ab hier sollte cuckoo laufen</h4>
-<h2 id="3-creation-of-the-base-virtual-machine">3. Creation of the Base-Virtual Machine</h2>
+cuckoo community --force
+</code></pre><h2 id="3-creation-of-the-base-virtual-machine">3. Creation of the Base-Virtual Machine</h2>
 <p>The previously installed tool Vmcloak is used to create virtual machines. This tool enables an automatic generation of analysis systems.</p>
 <p>For this purpose, an ISO file is required, which is then written to a mount accessible to the user Cuckoo.</p>
+<h3 id="windows7-system">Windows7 system:</h3>
 <p>Download Windows ISO file</p>
 <pre><code class="language-console" data-lang="console">sudo wget https://cuckoo.sh/win7ultimate.iso
 </code></pre><p>Directory Mounting</p>
@@ -232,7 +237,7 @@ The Default VM serves as a basis for the creation of future virtual analysis mac
 The syntax is as follows:</p>
 <pre><code class="language-console" data-lang="console">vmcloak init &lt;os flag&gt; &lt;vmname&gt; &lt;options&gt;
 vmcloak init --verbose --win7x64 win7x64Base --cpus 2 --ramsize 2048
-</code></pre><h3 id="windows10-systems">Windows10 systems:</h3>
+</code></pre><h3 id="windows10-system">Windows10 system:</h3>
 <p>It is important to note that at the time of writing the document, current versions of Windows are not supported. For this reason, an older version of Windows should be used to create the system.</p>
 <p>Windows can be obtained from the following website: <a href="https://tb.rg-adguard.net/public.php">https://tb.rg-adguard.net/public.php</a></p>
 <p>In my case the following Windows 10 version is used:<br>
@@ -247,27 +252,66 @@ Windows 10, Version 1809 – Redstone 5</p>
 The Vmcloack tool is used to clone a VM. 
 The syntax for cloning a virtual disk image (VDI) from an existing one is as follows:</p>
 <pre><code class="language-console" data-lang="console">vmcloak clone presentVDI newVDI
-</code></pre><p>This command creates a .vdi file under the /home/cuckoo/.vmcloak/image directory.</p>
+</code></pre><p><img src="/img/cuckoo_sandbox/cloneVM.png" alt="Image cloneVM">
+This command creates a .vdi file under the /home/cuckoo/.vmcloak/image directory.</p>
 <h2 id="5-software-installation-on-analysis-systems">5. Software installation on analysis systems</h2>
 <p>The installation of additional software on the analysis systems is not necessary. However, in order to simulate the system environment of a user as realistically as possible, it is highly recommended. Malware often works/spreads in dependence of third party software. For this reason, standard software applications such as office products, readers and browsers are installed. Additionally, parameters such as activation of macros in Office products can be used to make the system even more vulnerable to malware.</p>
 <p>A software package can be installed using the following syntax:</p>
 <pre><code class="language-console" data-lang="console">vmcloak install &lt;image name&gt; &lt;package&gt;
-</code></pre><p>A specific version or serial key can be selected by:</p>
+</code></pre><p><img src="/img/cuckoo_sandbox/vmcloaklist.png" alt="Image vmcloak_list"></p>
+<p>A specific version or serial key can be selected by:</p>
 <pre><code class="language-console" data-lang="console">package.version=X or package.serialkey=X. 
 </code></pre><p>If no version was selected, the latest version will be selected.</p>
 <p>I will install some basic software packages:</p>
 <pre><code class="language-console" data-lang="console">vmcloak install win10x64Cuckoo1 adobe9 wic pillow java7
-</code></pre><p>If you now want to install Office 2007, assuming that a valid serial key are available, you can do this as follows.</p>
+</code></pre><p><img src="/img/cuckoo_sandbox/vmcloakinstall.png" alt="Image vmcloak_install"></p>
+<p>If you now want to install Office 2007, assuming that a valid serial key are available, you can do this as follows:</p>
 <pre><code class="language-console" data-lang="console">vmcloak install win10x64Cuckoo1 office2007 \office2007.isopath=/path/to/a.iso \office2007.serialkey=XXX-XXX
 </code></pre><p>If the installation using Vmcloak does not work, you should mount the installation ISO in the virtual machine drive as a workaround.</p>
-<p>The following steps are required for this:</p>
-<h2 id="6-creation-of-snapshots">6. Creation of snapshots</h2>
+<p>The following steps are required:</p>
+<ol>
+<li>Start the virtual machine from the VirtualBox GUI.</li>
+<li>Select the path to the software ISO file under the tab Devices &gt; Optical Drives &gt; Select Image
+<img src="/img/cuckoo_sandbox/manualInstallationISO.png" alt="Image mount_ISO"></li>
+<li>Go through the graphic installation of the software as usual.</li>
+</ol>
+<h2 id="6-creation-of-snapshots">6. Creation of Snapshots</h2>
 <p>After creating the analysis system, a snapshot of the analysis system has to be created. The syntax for creating snapshots is as follows:</p>
 <pre><code class="language-console" data-lang="console">Vmcloack snapshot &lt;Machine name&gt; &lt;Snapshot name&gt; &lt;Static IP assignment
 vmcloak snapshot win7x64cuckoo Snap1 192.168.56.101
-</code></pre><p>After executing the command, the analysis system should be displayed in Virtualbox. If this is the case and no error message is displayed, the following section (6.1 Workarund Multi-attach) can be skipped.</p>
+</code></pre><p><img src="/img/cuckoo_sandbox/vmcloakSnap.png" alt="Image snap"></p>
+<p>After executing the command, the analysis system should be displayed in Virtualbox. If this is the case and no error message is displayed, the following section (6.1 Workarund Multi-attach) can be skipped.</p>
 <h3 id="61-workaround-for-the-error-message-cannot-multi-attatch-media">6.1 Workaround for the error message &ldquo;Cannot Multi-attatch media&rdquo;</h3>
 <p>If the following error occurs Cannot change type for medium: the media type &ldquo;Multiattach&rdquo;, this section provides a workaround. If the snapshot was created without causing problems, this section can be skipped.</p>
+<p><img src="/img/cuckoo_sandbox/errorMultiattatch.png" alt="Image multiattatch"></p>
+<h4 id="the-following-steps-are-necessary-for-the-workaround">The following steps are necessary for the workaround:</h4>
+<p>Create a temporary &ldquo;Throw-Away&rdquo; machine</p>
+<p><img src="/img/cuckoo_sandbox/throw_away.png" alt="Image throw_AwayVM"></p>
+<p>When selecting the disk image, select the Analysis VM.</p>
+<p><img src="/img/cuckoo_sandbox/selectVM.png" alt="Image selectVM"></p>
+<p>Open the virtual media manager in VirtualBox:</p>
+<p><img src="/img/cuckoo_sandbox/openMediaM.png" alt="Image mediaManager"></p>
+<p>Select disk image of the previously created Throw_away VM in Media Manager:</p>
+<p><img src="/img/cuckoo_sandbox/selectThrowAway.png" alt="Image selectThrowAway"></p>
+<p>Set Disk-Type to Multi-attach:
+Under the Properties tab in the Type -&gt; Select Multi-attach selection, click Apply.</p>
+<p><img src="/img/cuckoo_sandbox/vm_properties.png" alt="Image vm_properties"></p>
+<p>Since the virtual disk image now has the multi-attach flag set, we can add it to VirtualBox as a snapshot using Vmcloak as described in the previous section. To do so execute the following command:</p>
+<pre><code class="language-console" data-lang="console">vmcloak snapshot win7x64cuckoo cuckoo1 192.168.56.101
+</code></pre><p>Afterwards the throw_away VM can be deleted.</p>
+<h2 id="7-updating-configuration-files">7. Updating configuration files</h2>
+<p>The following describes which changes must be made to configuration files to get the Cuckoo Sandbox up and running. 
+If new systems have been added, an update of the configuration file &ldquo;virtualbox.conf&rdquo; is necessary. 
+The configuration file is located under the directory:</p>
+<p>/home/cuckoo/.cuckoo/conf/virtualbox.conf</p>
+<p>New machines can be added manually using the editor or alternatively automated by the following command combination:</p>
+<pre><code class="language-console" data-lang="console">while read -r vm ip; do cuckoo machine --add $vm $ip; done &lt; &lt;(vmcloak list vms)
+</code></pre><h2 id="8-additional-features">8. Additional features</h2>
+<h4 id="1-remote-control">1. Remote control</h4>
+<p>By adding guacamole it is possible to remotely control the analysis systems and interact with the malware. A really cool feature that is definitely worth checking out.</p>
+<h4 id="2-viper-and-misp-integration">2. Viper and Misp integration</h4>
+<p>If you are not familiar with the projects <a href="https://github.com/viper-framework/viper">Viper</a> and <a href="https://www.misp-project.org/">Misp</a> you should definitely have a look at them. Both can be easily integrated into cuckoo. The necessary steps can be found in the official cuckoo documentation.</p>
+<h4 id="3-my-start-script">3. My Start-Script</h4>
 <p>For starting all necessary services of the Cuckoo sandbox I have written a script which is executed as a cronjob when the system boots. I have put it on <a href="https://github.com/T0XICITY/cuckoo/blob/master/start_cuckoo.sh">GitHub</a> for all interested. Please note that you have to make changes to the ports and services if you want to use it.</p>
 <p>If you have come this far, i wish you a lot of fun with your brand new sandbox. Don&rsquo;t forget to check out the additional modules and extensions of the Cuckoo sandbox.</p>
 
