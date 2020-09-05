@@ -164,6 +164,7 @@ This manual describes the installation of the Cuckoo Sandbox and its modules. Si
 <p>This manual describes the installation of the Cuckoo Sandbox and its modules. Since setting up the sanbdox can sometimes cause a lot of difficulties I have found some useful workarounds for my issues, which I would like to publish here. The manual is strongly based on the official documentation of the Cuckoo Sandbox. Nevertheless some changes have been made, some passages have been shortened or extended to fit the host system.</p>
 <p>The Official Documentation can be found at <a href="https://cuckoo.sh/docs/">https://cuckoo.sh/docs/</a></p>
 <p>The basic architecture of the system used for this is as follows:</p>
+<p><img src="/img/cuckoo_sandbox/cuckoo_architecture.png" alt="Image Cuckoo-Machine-Architecture"></p>
 <h2 id="1-host-system-requirements">1. Host system requirements</h2>
 <p>The following describes the requirements for installing Cuckoo on the system.</p>
 <p>My configuration of the system is as follows:</p>
@@ -172,10 +173,9 @@ This manual describes the installation of the Cuckoo Sandbox and its modules. Si
 <li>Debian 10.0 Buster</li>
 <li>8GB Ram</li>
 <li>At least 200GB memory</li>
-<li>Virtualbox 6.1.6</li>
+<li>Virtualbox 6.0</li>
 <li>Cuckoo Sandbox v2.0.7</li>
 </ul>
-<p><img src="/img/cuckoo_sandbox/cuckoo_architecture.png" alt="Image Cuckoo-Machine-Architecture"></p>
 <p>It is important to provide the machine enough memory (min. 200GB), because the host system will be extended by multiple virtual analysis systems in the next steps.</p>
 <p>For this reason it is also absolutely necessary to make the following setting on the host system, enabling nested virtualization. 
 Nested virtualization can be activated in the CPU settings as shown in the following screenshot.</p>
@@ -309,9 +309,11 @@ The configuration file is located under the directory:</p>
 </code></pre><h2 id="8-additional-features">8. Additional features</h2>
 <h4 id="1-remote-control">1. Remote control</h4>
 <p>By adding guacamole it is possible to remotely control the analysis systems and interact with the malware. A really cool feature that is definitely worth checking out.</p>
-<h4 id="2-viper-and-misp-integration">2. Viper and Misp integration</h4>
-<p>If you are not familiar with the projects <a href="https://github.com/viper-framework/viper">Viper</a> and <a href="https://www.misp-project.org/">Misp</a> you should definitely have a look at them. Both can be easily integrated into cuckoo. The necessary steps can be found in the official cuckoo documentation.</p>
-<h4 id="3-my-start-script">3. My Start-Script</h4>
+<h4 id="2-moloch">2. Moloch</h4>
+<p><a href="https://molo.ch/">Moloch</a> is used to save network traffic caused by malware in standard PCAP format. Via a web interface the outgoing and incoming connections can be viewed, downloaded and analyzed quickly.</p>
+<h4 id="3-viper-and-misp-integration">3. Viper and Misp integration</h4>
+<p>The MISP Threat Exchange Platform is a free and open source software that supports the exchange of threat information, including cyber security indicators. If you are not familiar with the projects <a href="https://github.com/viper-framework/viper">Viper</a> and <a href="https://www.misp-project.org/">Misp</a> you should definitely have a look at them. Both can be easily integrated into cuckoo. The necessary steps can be found in the <a href="https://cuckoo.sh/docs/">Cuckoo documentation</a>.</p>
+<h4 id="4-my-start-script">4. My Start-Script</h4>
 <p>For starting all necessary services of the Cuckoo sandbox I have written a script which is executed as a cronjob when the system boots. I have put it on <a href="https://github.com/T0XICITY/cuckoo/blob/master/start_cuckoo.sh">GitHub</a> for all interested. Please note that you have to make changes to the ports and services if you want to use it.</p>
 <p>If you have come this far, i wish you a lot of fun with your brand new sandbox. Don&rsquo;t forget to check out the additional modules and extensions of the Cuckoo sandbox.</p>
 

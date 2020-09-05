@@ -29,7 +29,7 @@ This manual describes the installation of the Cuckoo Sandbox and its modules. Si
       
       <guid>https://T0XICITY.com/blog/xss-game/</guid>
       <description>Google XSS Game In this post I solve the Goolge beginners XSS challanges. These are easier and especially recommended for beginners.
-Level 1: Hello, world of XSS This entry-level task is a simple example of XSS. No matter which payload is placed where, it is executed.
+Level 1: Hello, world of XSS This entry-level task is a simple example of XSS. Regardless of whether the payload is passed within the url or directly in the application it will pop.
 Payload: // In the input field &amp;lt;script&amp;gt;alert(0)&amp;lt;/script&amp;gt; //In the url frame?query=&amp;lt;script&amp;gt;alert(0)&amp;lt;/script&amp;gt; The code is integrated into the application without further verification, so that the browser understands and executes it as part of the page code.</description>
     </item>
     

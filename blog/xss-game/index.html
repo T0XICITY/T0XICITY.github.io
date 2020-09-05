@@ -7,7 +7,7 @@
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 <meta name="description" content="Google XSS Game In this post I solve the Goolge beginners XSS challanges. These are easier and especially recommended for beginners.
-Level 1: Hello, world of XSS This entry-level task is a simple example of XSS. No matter which payload is placed where, it is executed.
+Level 1: Hello, world of XSS This entry-level task is a simple example of XSS. Regardless of whether the payload is passed within the url or directly in the application it will pop.
 Payload: // In the input field &amp;lt;script&amp;gt;alert(0)&amp;lt;/script&amp;gt; //In the url frame?query=&amp;lt;script&amp;gt;alert(0)&amp;lt;/script&amp;gt; The code is integrated into the application without further verification, so that the browser understands and executes it as part of the page code."/>
 <meta name="keywords" content="hacking, bash, linux, ctf"/>
 <meta name="robots" content="noodp"/>
@@ -164,7 +164,7 @@ Payload: // In the input field &amp;lt;script&amp;gt;alert(0)&amp;lt;/script&amp
 <p>In this post I solve the Goolge beginners XSS challanges. These are easier and especially recommended for beginners.</p>
 <h2 id="level-1-hello-world-of-xss">Level 1: Hello, world of XSS</h2>
 <p><img src="/img/googleXSSCtf/googleXXSCtf1.1.png" alt="Image Challange1.1"></p>
-<p>This entry-level task is a simple example of XSS. No matter which payload is placed where, it is executed.</p>
+<p>This entry-level task is a simple example of XSS. Regardless of whether the payload is passed within the url or directly in the application it will pop.</p>
 <h4 id="payload">Payload:</h4>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#75715e">// In the input field
 </span><span style="color:#75715e"></span>&lt;<span style="color:#a6e22e">script</span>&gt;<span style="color:#a6e22e">alert</span>(<span style="color:#ae81ff">0</span>)&lt;<span style="color:#f92672">/</span><span style="color:#a6e22e">script</span>&gt;
@@ -179,10 +179,10 @@ Payload: // In the input field &amp;lt;script&amp;gt;alert(0)&amp;lt;/script&amp
 <p><img src="/img/googleXSSCtf/googleXSSCtf2.2.jpg" alt="Image Challange2.2"></p>
 <h2 id="level-3-that-sinking-feeling">Level 3: That sinking Feeling…</h2>
 <p><img src="/img/googleXSSCtf/googleXSSCtf3.1.png" alt="Image Challange3.1"></p>
-<p>This application gives the user 3 images to choose from. Depending on which image the user selects, the number of images in the url changes.</p>
-<p>My first step was to check what happens if i enter a number in the url that does not exist on the application for example #6.</p>
+<p>This application gives the user 3 images to choose from. Depending on which image the user selects, the number of images in the URL changes.</p>
+<p>My first step was to check what happens if i enter a number in the URL that does not exist on the application for example #6.</p>
 <p><img src="/img/googleXSSCtf/googleXSSCtf3.2.png" alt="Image Challange3.2"></p>
-<p>My request is processed normally but no picture is displayed, because it is obviously not existent.</p>
+<p>My request is processed normally but no picture is displayed - NICE! because the image is obviously not existent but the application stil delivers a valid response.</p>
 <p>The next step was to test what happens when I type in known JavaScript escape characters like ' single quote or
 &quot; double quote.</p>
 <p><img src="/img/googleXSSCtf/googleXSSCtf3.3.jpg" alt="Image Challange3.3"></p>
@@ -195,9 +195,9 @@ Payload: // In the input field &amp;lt;script&amp;gt;alert(0)&amp;lt;/script&amp
 In this task we can pass a number to the page input which is passed to a timer function. The input is not checked, so special characters and letters can also be entered.</p>
 <p>Adding a single qoutes leads to an error in the startTimer function.<br>
 <img src="/img/googleXSSCtf/googleXSSCtf4.2.jpg" alt="Image Challange4.1"></p>
-<p>If we now add a <strong>&quot;)&quot;</strong> the call looks like this:</p>
+<p>If we now add a <strong>&quot;)&quot;</strong> the function call looks like this:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">onload</span>=<span style="color:#e6db74">&#34;startTimer(&#39;3&#39;)&#39;);&#34;</span></code></pre></div>
-<p>to create a valid statement and trigger an alert the following must be added:</p>
+<p>to create a valid statement and trigger an alert the following part must be added:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#75715e">//Added part
 </span><span style="color:#75715e"></span><span style="color:#960050;background-color:#1e0010">&#39;</span>);<span style="color:#a6e22e">alert</span>(<span style="color:#960050;background-color:#1e0010">&#39;</span><span style="color:#ae81ff">0</span>
 
@@ -206,18 +206,18 @@ In this task we can pass a number to the page input which is passed to a timer f
 <p>Our payload is now valid and is processed correctly.</p>
 <h2 id="level-5-breaking-protocol">Level 5: Breaking protocol</h2>
 <p><img src="/img/googleXSSCtf/googeXSSCtf5.1.png" alt="Image Challange5.1"></p>
-<p>The welcome page does nothing special, it only leads us to the login page. On the login page, we can make any input and click on the next link.
-<img src="/img/googleXSSCtf/googleXSSCtf5.2.jpg" alt="Image Challange5.2"></p>
+<p>The welcome page does nothing special, it only leads us to the login page.
+On the login page, we can make any input and click on the next link.</p>
+<p><img src="/img/googleXSSCtf/googleXSSCtf5.2.jpg" alt="Image Challange5.2"></p>
 <p>The next parameter is used to set the window.location. We can use this parameter to execute our Javascript function.</p>
 <h4 id="payload-3">Payload:</h4>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">https</span>:<span style="color:#f92672">//</span><span style="color:#a6e22e">xss</span><span style="color:#f92672">-</span><span style="color:#a6e22e">game</span>.<span style="color:#a6e22e">appspot</span>.<span style="color:#a6e22e">com</span><span style="color:#f92672">/</span><span style="color:#a6e22e">level5</span><span style="color:#f92672">/</span><span style="color:#a6e22e">frame</span><span style="color:#f92672">/</span><span style="color:#a6e22e">signup</span><span style="color:#960050;background-color:#1e0010">?</span><span style="color:#a6e22e">next</span>=<span style="color:#a6e22e">javascript</span>:<span style="color:#a6e22e">alert</span>(<span style="color:#ae81ff">0</span>)</code></pre></div>
 <h2 id="level-6-follow-the-">Level 6: Follow the 🐇</h2>
 <p><img src="/img/googleXSSCtf/googleXSSCtf6.1.png" alt="Image Challange6.1"></p>
 <p>For this task the description gives some good hints on how the application works.</p>
-<p>The filter is configured to blacklist and thus prohibit access to &ldquo;remote&rdquo; content. In this case it should prohibit access to other remote servers by blacklisting https.
-<img src="/img/googleXSSCtf/googleXSSCtf6.2.jpg" alt="Image Challange6.2">
-the filter is easy to bypass because it is not case sensitive. In this case we can simply use Https, hTTps or httpS to execute our payload.</p>
-<p>So we can trigger an alert function</p>
+<p>The filter is configured to blacklist and thus prohibit access to &ldquo;remote&rdquo; content. In this case it should prohibit access to other remote servers by blacklisting <del>https</del>.</p>
+<p><img src="/img/googleXSSCtf/googleXSSCtf6.2.jpg" alt="Image Challange6.2"></p>
+<p>Anyway the filter is easy to bypass because it is not case sensitive. In this case we can simply use <strong>H</strong>ttps, h<strong>TT</strong>ps or http<strong>S</strong> to execute our payload.</p>
 <p><img src="/img/googleXSSCtf/googleXSSCtf6.3.jpg" alt="Image Challange6.3"></p>
 
     </div>
